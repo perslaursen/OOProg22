@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectChangeAutomat", "CorrectChangeAutomat.csproj", "{278554D1-E9FD-419C-833E-AF3B8527BC67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{278554D1-E9FD-419C-833E-AF3B8527BC67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{278554D1-E9FD-419C-833E-AF3B8527BC67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{278554D1-E9FD-419C-833E-AF3B8527BC67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{278554D1-E9FD-419C-833E-AF3B8527BC67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CBB6F5D-1E1E-495E-A4B4-9D6F8D33CEAF}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RolePlayV20", "RolePlayV20.csproj", "{FC626EE7-EB74-4329-B176-78A671FC1CDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC626EE7-EB74-4329-B176-78A671FC1CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC626EE7-EB74-4329-B176-78A671FC1CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC626EE7-EB74-4329-B176-78A671FC1CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC626EE7-EB74-4329-B176-78A671FC1CDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2556993C-DC01-4FAE-8CA6-4DC2BAA8F7FB}
+	EndGlobalSection
+EndGlobal
