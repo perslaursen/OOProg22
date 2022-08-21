@@ -3,14 +3,14 @@
 /// This class represents a collection of students,
 /// for instance students attending a school
 /// </summary>
-public class StudentCatalog
+public class StudentRepository
 {
     #region Instance fields
     private Dictionary<int, Student> _students;
     #endregion
 
     #region Constructor
-    public StudentCatalog()
+    public StudentRepository()
     {
         _students = new Dictionary<int, Student>();
     }
@@ -32,7 +32,10 @@ public class StudentCatalog
     /// </summary>
     public void AddStudent(Student aStudent)
     {
-        // TODO
+        if (!_students.ContainsKey(aStudent.ID))
+        {
+            _students.Add(aStudent.ID, aStudent);
+        }
     }
 
     /// <summary>
@@ -41,8 +44,7 @@ public class StudentCatalog
     /// </summary>
     public Student GetStudent(int id)
     {
-        // TODO
-        return null;
+        return _students.ContainsKey(id) ? _students[id] : null;
     }
 
     /// <summary>
@@ -51,8 +53,7 @@ public class StudentCatalog
     /// </summary>
     public int GetAverageForStudent(int id)
     {
-        // TODO
-        return -1;
+        return _students.ContainsKey(id) ? _students[id].ScoreAverage : -1;
     }
 
     /// <summary>
@@ -62,8 +63,19 @@ public class StudentCatalog
     /// </summary>
     public int GetTotalAverage()
     {
-        // TODO
-        return 0;
+        int sumOfAverages = 0;
+        int studentCount = 0;
+
+        foreach (Student aStudent in _students.Values)
+        {
+            if (aStudent.ScoreAverage != -1)
+            {
+                sumOfAverages = sumOfAverages + aStudent.ScoreAverage;
+                studentCount++;
+            }
+        }
+
+        return studentCount > 0 ? sumOfAverages / studentCount : -1;
     }
     #endregion
 }

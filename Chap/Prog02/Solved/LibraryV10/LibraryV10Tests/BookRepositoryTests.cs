@@ -3,9 +3,9 @@
 namespace Tests
 {
     [TestClass()]
-    public class BookCatalogTests
+    public class BookRepositoryTests
     {
-        private BookCatalog _catalog;
+        private BookRepository _repository;
 
         public void TestSetup()
         {
@@ -14,11 +14,11 @@ namespace Tests
             Book b3 = new Book("DD0095", "Cars in the USA", "Susan Dreyer", 528);
             Book b4 = new Book("PT1295", "The World Narrators", "Dan Mygind", 256);
 
-            _catalog = new BookCatalog();
-            _catalog.AddBook(b1);
-            _catalog.AddBook(b2);
-            _catalog.AddBook(b3);
-            _catalog.AddBook(b4);
+            _repository = new BookRepository();
+            _repository.AddBook(b1);
+            _repository.AddBook(b2);
+            _repository.AddBook(b3);
+            _repository.AddBook(b4);
         }
 
         [TestMethod()]
@@ -28,9 +28,9 @@ namespace Tests
             TestSetup();
 
             // Act
-            int beforeCount = _catalog.Count;
-            _catalog.AddBook(new Book("KS2007", "Dogs and Cats", "Jim Scott", 217));
-            int afterCount = _catalog.Count;
+            int beforeCount = _repository.Count;
+            _repository.AddBook(new Book("KS2007", "Dogs and Cats", "Jim Scott", 217));
+            int afterCount = _repository.Count;
 
             // Assert
             Assert.AreEqual(4, beforeCount);
@@ -44,7 +44,7 @@ namespace Tests
             TestSetup();
 
             // Act
-            Book result = _catalog.LookupBook("AD1337");
+            Book result = _repository.LookupBook("AD1337");
 
             // Assert
             Assert.AreNotEqual(null, result);
@@ -58,7 +58,7 @@ namespace Tests
             TestSetup();
 
             // Act
-            Book result = _catalog.LookupBook("AD1338");
+            Book result = _repository.LookupBook("AD1338");
 
             // Assert
             Assert.AreEqual(null, result);
@@ -71,7 +71,7 @@ namespace Tests
             TestSetup();
 
             // Act
-            Book result = _catalog.LookupBook("...");
+            Book result = _repository.LookupBook("...");
 
             // Assert
             Assert.AreEqual(null, result);
@@ -84,7 +84,7 @@ namespace Tests
             TestSetup();
 
             // Act
-            Book result = _catalog.LookupBook("ad1337");
+            Book result = _repository.LookupBook("ad1337");
 
             // Assert
             Assert.AreEqual(null, result);
@@ -97,9 +97,9 @@ namespace Tests
             TestSetup();
 
             // Act
-            int beforeCount = _catalog.Count;
-            _catalog.DeleteBook("XS3220");
-            int afterCount = _catalog.Count;
+            int beforeCount = _repository.Count;
+            _repository.DeleteBook("XS3220");
+            int afterCount = _repository.Count;
 
             // Assert
             Assert.AreEqual(4, beforeCount);
@@ -113,9 +113,9 @@ namespace Tests
             TestSetup();
 
             // Act
-            int beforeCount = _catalog.Count;
-            _catalog.DeleteBook("SX2320");
-            int afterCount = _catalog.Count;
+            int beforeCount = _repository.Count;
+            _repository.DeleteBook("SX2320");
+            int afterCount = _repository.Count;
 
             // Assert
             Assert.AreEqual(4, beforeCount);

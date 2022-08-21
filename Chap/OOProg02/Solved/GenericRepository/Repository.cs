@@ -1,9 +1,9 @@
 ﻿
-public class Catalog<TKey, TValue>
+public class Repository<TKey, TValue>
 {
     private Dictionary<TKey, TValue> _items;
 
-    public Catalog()
+    public Repository()
     {
         _items = new Dictionary<TKey, TValue>();
     }

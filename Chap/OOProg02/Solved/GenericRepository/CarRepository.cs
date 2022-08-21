@@ -1,9 +1,9 @@
 ﻿
-public class CarCatalog
+public class CarRepository
 {
     private Dictionary<string, Car> _cars;
 
-    public CarCatalog()
+    public CarRepository()
     {
         _cars = new Dictionary<string, Car>();
     }

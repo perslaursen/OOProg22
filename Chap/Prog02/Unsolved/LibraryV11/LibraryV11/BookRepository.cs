@@ -3,16 +3,16 @@
 /// This class represents a collection of Book objects,
 /// for instance the books in a library
 /// </summary>
-public class BookCatalog
+public class BookRepository
 {
     #region Instance fields
-    private List<Book> _books;
+    private Dictionary<string, Book> _books;
     #endregion
 
     #region Constructor
-    public BookCatalog()
+    public BookRepository()
     {
-        _books = new List<Book>();
+        _books = new Dictionary<string, Book>();
     }
     #endregion
 
@@ -30,7 +30,7 @@ public class BookCatalog
     /// </summary>
     public void AddBook(Book aBook)
     {
-        _books.Add(aBook);
+        // TODO
     }
 
     /// <summary>
@@ -40,14 +40,7 @@ public class BookCatalog
     /// </summary>
     public Book LookupBook(string isbn)
     {
-        foreach (var book in _books)
-        {
-            if (book.ISBN == isbn)
-            {
-                return book;
-            }
-        }
-
+        // TODO
         return null;
     }
 
@@ -59,14 +52,7 @@ public class BookCatalog
     /// </summary>
     public void DeleteBook(string isbn)
     {
-        for (int i = 0; i < _books.Count; i++)
-        {
-            if (_books[i].ISBN == isbn)
-            {
-                _books.RemoveAt(i);
-                return;
-            }
-        }
+        // TODO
     }
     #endregion
 }

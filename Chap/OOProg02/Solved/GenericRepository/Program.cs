@@ -1,5 +1,5 @@
 ﻿
-Catalog<string, Car> cars = new Catalog<string, Car>();
+Repository<string, Car> cars = new Repository<string, Car>();
 
 Car c1 = new Car("AB 12 345", 80000);
 Car c2 = new Car("CD 34 456", 65000);
@@ -10,14 +10,14 @@ cars.Insert(c2.LicensePlate, c2);
 cars.Insert(c3.LicensePlate, c3);
 
 
-Catalog<string, Employee> employees = new Catalog<string, Employee>();
+Repository<string, Employee> employees = new Repository<string, Employee>();
 
 Employee e1 = new Employee("Allan", 1962);
 Employee e2 = new Employee("Bente", 1975);
 employees.Insert(c1.LicensePlate, e1);
 employees.Insert(c2.LicensePlate, e2);
 
-Catalog<string, Computer> computers = new Catalog<string, Computer>();
+Repository<string, Computer> computers = new Repository<string, Computer>();
 
 Computer co1 = new Computer("XN001", "Server");
 Computer co2 = new Computer("XN002", "Backup");
@@ -28,7 +28,7 @@ computers.Insert(co2.NetworkName, co2);
 computers.Insert(co3.NetworkName, co3);
 computers.Insert(co4.NetworkName, co4);
 
-Catalog<int, Phone> phones = new Catalog<int, Phone>();
+Repository<int, Phone> phones = new Repository<int, Phone>();
 
 Phone p1 = new Phone(12345678, "Samsung");
 Phone p2 = new Phone(23456789, "LG");

@@ -1,5 +1,5 @@
 ﻿
-CarCatalog cars = new CarCatalog();
+CarRepository cars = new CarRepository();
 
 Car c1 = new Car("AB 12 345", 80000);
 Car c2 = new Car("CD 34 456", 65000);
@@ -10,7 +10,7 @@ cars.Insert(c2.LicensePlate, c2);
 cars.Insert(c3.LicensePlate, c3);
 
 
-EmployeeCatalog employees = new EmployeeCatalog();
+EmployeeRepository employees = new EmployeeRepository();
 
 Employee e1 = new Employee("Allan", 1962);
 Employee e2 = new Employee("Bente", 1975);

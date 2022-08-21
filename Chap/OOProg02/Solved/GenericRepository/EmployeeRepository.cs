@@ -1,9 +1,9 @@
 ﻿
-public class EmployeeCatalog
+public class EmployeeRepository
 {
     private Dictionary<string, Employee> _employees;
 
-    public EmployeeCatalog()
+    public EmployeeRepository()
     {
         _employees = new Dictionary<string, Employee>();
     }

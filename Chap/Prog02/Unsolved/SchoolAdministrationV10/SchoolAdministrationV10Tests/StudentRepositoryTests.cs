@@ -3,13 +3,13 @@
 namespace Tests
 {
     [TestClass()]
-    public class StudentCatalogTests
+    public class StudentRepositoryTests
     {
-        private StudentCatalog _students;
+        private StudentRepository _students;
 
         public void TestSetup()
         {
-            _students = new StudentCatalog();
+            _students = new StudentRepository();
 
             Student anna = new Student(12, "Anna");
             Student betty = new Student(338, "Betty");
