@@ -2,6 +2,7 @@
 /// <summary>
 /// This class represents a single N-sided die
 /// The creator of Die objects specify the value of N
+/// NB: This class is only used for steps 5 and 6
 /// </summary>
 class DieNSides
 {
@@ -33,6 +34,11 @@ class DieNSides
     public void Roll()
     {
         _faceValue = RandomNumberGenerator.Generate(1, _noOfSides);
+    }
+
+    public override string ToString()
+    {
+        return _faceValue.ToString();
     }
     #endregion
 }
