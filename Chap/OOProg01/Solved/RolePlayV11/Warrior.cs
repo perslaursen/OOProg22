@@ -48,5 +48,11 @@ public class Warrior
     {
         _hitPoints = _hitPoints - points;
     }
+
+    // NB: This method is only used for solving step 5
+    public int DealDamage()
+    {
+        return RandomNumberGenerator.Generate(10, 30);
+    }
     #endregion
 }
