@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "Anders",
+    "Phone": "51 09 12 90",
+    "Address": "Stien 45",
+    "Id": 1
+  },
+  {
+    "Name": "Benny",
+    "Phone": "41 29 59 02",
+    "Address": "Skolevej 89",
+    "Id": 2
+  },
+  {
+    "Name": "Carina",
+    "Phone": "47 01 07 88",
+    "Address": "Markvej 53",
+    "Id": 3
+  }
+]
