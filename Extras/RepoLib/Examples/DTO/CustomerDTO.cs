@@ -1,4 +1,8 @@
 ﻿
+/// <summary>
+/// DTO class corresponding to Customer model class.
+/// Mapping is trivial, since Customer only contains properties of simple types.
+/// </summary>
 public class CustomerDTO : DTOBase
 {
     public string Name { get; set; }
@@ -10,18 +14,5 @@ public class CustomerDTO : DTOBase
         Name = "";
         Phone = "";
         Address = "";
-    }
-
-    public CustomerDTO(Customer customer)
-    {
-        Id = customer.Id;
-        Name = customer.Name;
-        Phone = customer.Phone;
-        Address = customer.Address;
-    }
-
-    public Customer Convert()
-    {
-        return new Customer(Id, Name, Phone, Address);
     }
 }

@@ -1,47 +1,45 @@
 ﻿
 Console.WriteLine("Begin");
 
-DataRepository dataRepo = new DataRepository();
-Console.WriteLine(dataRepo.CustomerRepo);
-Console.WriteLine(dataRepo.ProductRepo);
-Console.WriteLine(dataRepo.OrderRepo);
+bool doInlineInit = false;
+DataRepository dataRepo = new DataRepository(!doInlineInit);
 
-//ProductRepository productRepo = new ProductRepository(false);
+if (doInlineInit)
+{
+    InitCustomerRepo();
+    InitProductRepo();
+    InitOrderRepo();
+}
 
-//productRepo.Create(new Product("Product A", 100));
-//productRepo.Create(new Product("Product B", 100));
-//productRepo.Create(new Product("Product C", 100));
-
-//Console.WriteLine(productRepo);
-
-//productRepo.Save();
-
-
-
-//CustomerRepository customerRepo = new CustomerRepository(false);
-
-//customerRepo.Create(new Customer("Anders", "51 09 12 90", "Stien 12"));
-//customerRepo.Create(new Customer("Benny", "41 29 59 02", "Skolevej 33"));
-//customerRepo.Create(new Customer("Carina", "47 01 07 88", "Markvej 5"));
-
-//Console.WriteLine(customerRepo);
-
-//customerRepo.Save();
+Console.WriteLine(dataRepo.GetCustomersAsString());
+Console.WriteLine(dataRepo.GetProductsAsString());
+Console.WriteLine(dataRepo.GetOrdersAsString());
 
 
 
-//List<Product> prodList1 = new List<Product> { productRepo.Read(1), productRepo.Read(2) };
-//List<Product> prodList2 = new List<Product> { productRepo.Read(2), productRepo.Read(3) };
+void InitProductRepo()
+{
+    dataRepo.CreateProduct("Product A", 150, 1);
+    dataRepo.CreateProduct("Product B", 230, 2);
+    dataRepo.CreateProduct("Product C", 385, 3);
 
-//Order order1 = new Order(customerRepo.Read(1), prodList1);
-//Order order2 = new Order(customerRepo.Read(3), prodList2);
-//Order order3 = new Order(customerRepo.Read(1), prodList2);
+    dataRepo.SaveProducts();
+}
 
-//OrderRepository orderRepo = new OrderRepository(customerRepo, productRepo, false);
-//orderRepo.Create(order1);
-//orderRepo.Create(order2);
-//orderRepo.Create(order3);
+void InitCustomerRepo()
+{
+    dataRepo.CreateCustomer("Anders", "51 09 12 90", "Stien 12", 1);
+    dataRepo.CreateCustomer("Benny", "41 29 59 02", "Skolevej 33", 2);
+    dataRepo.CreateCustomer("Carina", "47 01 07 88", "Markvej 5", 3);
 
-//Console.WriteLine(orderRepo);
+    dataRepo.SaveCustomers();
+}
 
-//orderRepo.Save();
+void InitOrderRepo()
+{
+    dataRepo.CreateOrder(1, new List<int> { 1, 2} );
+    dataRepo.CreateOrder(3, new List<int> { 2, 3 });
+    dataRepo.CreateOrder(1, new List<int> { 1, 3 });
+
+    dataRepo.SaveOrders();
+}

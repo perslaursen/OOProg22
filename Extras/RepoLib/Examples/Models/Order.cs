@@ -1,4 +1,9 @@
-﻿    
+﻿
+/// <summary>
+/// Order model class. Note that the class has a 1-0..1 relation to Customer,
+/// and a 1-0..n relation to Product.
+/// Also, the class contains a calculated property.
+/// </summary>
 public class Order : ModelBase<Order>
 {
     public Customer? Customer { get; set; }
@@ -6,17 +11,7 @@ public class Order : ModelBase<Order>
 
     public double TotalPrice
     {
-        get 
-        {
-            double totalPrice = 0.0;
-
-            foreach (Product product in Products)
-            {
-                totalPrice += product.Price;
-            }
-
-            return totalPrice;
-        }
+        get { return Products.Select(e => e.Price).Sum(); }
     }
 
     public Order(int id, Customer? customer, List<Product> products) 

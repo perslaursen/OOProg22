@@ -1,4 +1,8 @@
 ﻿
+/// <summary>
+/// DTO class corresponding to Product model class.
+/// Mapping is trivial, since Product only contains properties of simple types.
+/// </summary>
 public class ProductDTO : DTOBase
 {
     public string Description { get; set; }
@@ -8,17 +12,5 @@ public class ProductDTO : DTOBase
     {
         Description = "";
         Price = 0.0;
-    }
-
-    public ProductDTO(Product product)
-    {
-        Id = product.Id;
-        Description = product.Description;
-        Price = product.Price;
-    }
-
-    public Product Convert()
-    {
-        return new Product(Id, Description, Price);
     }
 }

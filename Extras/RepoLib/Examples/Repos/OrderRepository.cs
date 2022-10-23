@@ -1,42 +1,31 @@
 ﻿
-public class OrderRepository : JsonRepositoryBase<Order, OrderDTO>
+/// <summary>
+/// Explicit repository for Order object.
+/// This is needed to provide a meaningful implementation of Search.
+/// </summary>
+public class OrderRepository : RepositoryAdapterBase<Order, OrderDTO>
 {
-    private CustomerRepository _customerRepo;
-    private ProductRepository _productRepo;
-
-    public OrderRepository(CustomerRepository customerRepo, ProductRepository productRepo, bool loadOnCreation = true)
-        : base(false)
+    public OrderRepository(IPersistentRepository<OrderDTO> dtoRepo, IDataConverter<Order, OrderDTO> dataConverter) 
+        : base(dtoRepo, dataConverter)
     {
-        _customerRepo = customerRepo;
-        _productRepo = productRepo;
-
-        if (loadOnCreation)
-            InitFromList(ReadAllFromDataSource());
     }
 
-    protected override string JsonFileName => @"C:\Users\persl\Documents\GitHubEASJ\OOProg22\Extras\RepoLib\Examples\Data\Orders.json";
-
-    protected override Order FromDTO(OrderDTO dto)
+    public override List<Order> Search(string searchTerm)
     {
-        return dto.Convert(_customerRepo, _productRepo);
+        return GetAll().Where(e => SearchMatch(e, searchTerm)).ToList();
     }
 
-    protected override OrderDTO ToDTO(Order t)
+    /// <summary>
+    /// SearchMatch is here defined as a match between the searchTerm
+    /// and the Name on the Customer object (if any).
+    /// </summary>
+    /// <param name="order">Order object to test for match</param>
+    /// <param name="searchTerm">string to match against Order object</param>
+    private bool SearchMatch(Order order, string searchTerm)
     {
-        return new OrderDTO(t);
-    }
-
-    protected override bool SearchMatch(Order t, string searchTerm)
-    {
-        if (t.Customer == null)
+        if (order.Customer == null)
             return false;
 
-        return t.Customer.Name.Contains(searchTerm);
-    }
-
-    protected override void UpdateObject(Order tEx, Order tNew)
-    {
-        tEx.Customer = tNew.Customer;
-        tEx.Products = tNew.Products;
+        return order.Customer.Name.Contains(searchTerm);
     }
 }

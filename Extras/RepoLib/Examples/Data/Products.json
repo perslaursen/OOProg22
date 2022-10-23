@@ -1,17 +1,17 @@
 [
   {
     "Description": "Product A",
-    "Price": 250,
+    "Price": 150,
     "Id": 1
   },
   {
     "Description": "Product B",
-    "Price": 375,
+    "Price": 230,
     "Id": 2
   },
   {
     "Description": "Product C",
-    "Price": 880,
+    "Price": 385,
     "Id": 3
   }
 ]

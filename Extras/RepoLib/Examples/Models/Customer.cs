@@ -1,4 +1,7 @@
 ﻿
+/// <summary>
+/// Customer model class. All properties have simple types.
+/// </summary>
 public class Customer : ModelBase<Customer>
 {
     public string Name { get; set; }
