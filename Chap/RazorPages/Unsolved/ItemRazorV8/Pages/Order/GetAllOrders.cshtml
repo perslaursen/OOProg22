@@ -1,0 +1,90 @@
+﻿@page
+@model ItemRazorV1.Pages.Order.GetAllOrdersModel
+@{
+}
+
+<h1>Orders</h1>
+
+<div class="row">
+	<div class="col-4"><h5>Search Customer Name</h5></div>
+	<div class="col-8"></div>
+</div>
+
+<div class="row">
+	<div class="col-4">
+		<form method="post" class="form-inline">
+			<div class="input-group mb-3">
+				<input asp-for="CustomerSearchString" class="form-control mr-1" placeholder="Enter search term" />
+				<input type="submit" asp-page-handler="CustomerNameSearch" value="Search" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+
+	<div class="col-8"></div>
+</div>
+
+<table class="table table-bordered table-hover table-striped table-opacity" width="60%">
+	<colgroup>
+		<col style="width : 5%">
+		<col style="width : 20%">
+		<col style="width : 25%">
+		<col style="width : 10%">
+		<col style="width : 30%">
+		<col style="width : 10%">
+	</colgroup>
+	<thead>
+		<tr class="btn-secondary active">
+			<th>
+				Id
+			</th>
+			<th>
+				Customer
+			</th>
+			<th>
+				Items
+			</th>
+			<th>
+				Total Price
+			</th>
+			<th>
+				Remark
+			</th>
+			<th>
+				Actions
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Orders != null)
+		{
+			foreach (var order in Model.Orders)
+			{
+				<tr class="btn-secondary">
+					<td>
+						@order.Id
+					</td>
+					<td>
+						@(order.Customer?.Name ?? "None")
+					</td>
+					<td>
+						@order.ItemsSummary
+					</td>
+					<td>
+						@order.TotalPrice
+					</td>
+					<td>
+						@order.Remark
+					</td>
+					<td>
+						<a class="btn btn-primary btn-sm" type="button" title="View" asp-page="ViewOrder" asp-route-id="@order.Id"><i class="fa fa-eye"></i></a>
+						<a class="btn btn-danger btn-sm" type="button" title="Delete" asp-page="DeleteOrder" asp-route-id="@order.Id"><i class="fa fa-trash"></i></a>
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
+
+<p>
+	<a class="btn btn-primary" asp-page="CreateOrder"> Create a new Order </a>
+</p>

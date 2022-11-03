@@ -1,0 +1,71 @@
+﻿@page
+@model ItemRazorV1.Pages.Item.GetAllItemsModel
+@{
+}
+
+<h1>Items</h1>
+
+<form method="post" class="form-inline">
+	<div class="input-group mb-3">
+		<input asp-for="SearchString" class="form-control mr-1" placeholder="Enter search term" />
+		<input type="submit" asp-page-handler="NameSearch" value="Search" class="btn btn-primary" />
+	</div>
+</form>
+
+<form method="post" class="form-inline">
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<span class="input-group-text">Min</span>
+		</div>
+		<input asp-for="MinPrice" class="form-control mr-1"/>
+		<div class="input-group-prepend">
+			<span class="input-group-text">Max</span>
+		</div>
+		<input asp-for="MaxPrice" class="form-control mr-1"/>
+		<input type="submit" asp-page-handler="PriceFilter" value="Filter" class="btn btn-primary" />
+	</div>
+</form>
+
+<table class="table table-bordered table-hover table-striped">
+	<thead>
+		<tr>
+			<th>
+				Id
+			</th>
+			<th>
+				Name
+			</th>
+			<th>
+				Price
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Items != null)
+		{
+			foreach (var item in Model.Items)
+			{
+				<tr>
+					<td>
+						@item.Id
+					</td>
+					<td>
+						@item.Name
+					</td>
+					<td>
+						@item.Price
+					</td>
+					<td>
+						<a class="btn btn-primary btn-sm" type="button" title="Edit" asp-page="EditItem" asp-route-id="@item.Id">Edit</a>
+						<a class="btn btn-danger btn-sm " type="button" title="Delete" asp-page="DeleteItem" asp-route-id="@item.Id">Delete</a>
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
+
+<p>
+	<a class="btn btn-primary" asp-page="CreateItem"> Create a new Item </a>
+</p>
+

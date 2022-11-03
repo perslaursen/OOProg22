@@ -1,0 +1,105 @@
+﻿@page "{id:int}"
+@model ItemRazorV1.Pages.Order.ViewOrderModel
+@{
+}
+
+<form method="get">
+	<div class="form-group">
+		<label asp-for="Order.Id" class="control-label"></label>
+		<input asp-for="Order.Id" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Order.CustomerInfo" class="control-label"></label>
+		<input asp-for="Order.CustomerInfo" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Order.ItemsSummary" class="control-label"></label>
+		<input asp-for="Order.ItemsSummary" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Order.TotalPrice" class="control-label"></label>
+		<input asp-for="Order.TotalPrice" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Order.Remark" class="control-label"></label>
+		<input asp-for="Order.Remark" class="form-control" readonly="@(true)" />
+	</div>
+
+	<div>
+		<label class="control-label">Items</label>
+		<table class="table table-bordered table-hover table-striped table-opacity" width="60%">
+			<colgroup>
+				<col style="width : 10%">
+				<col style="width : 60%">
+				<col style="width : 10%">
+				<col style="width : 10%">
+				<col style="width : 10%">
+			</colgroup>
+			<thead>
+				<tr class="btn-secondary active">
+					<th>
+						Id
+					</th>
+					<th>
+						Name
+					</th>
+					<th>
+						Amount
+					</th>
+					<th>
+						Price
+					</th>
+					<th>
+						Actions
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				@if (Model.Order.Items != null)
+				{
+					foreach (var orderLine in Model.Order.Items)
+					{
+						<tr class="btn-secondary">
+							<td>
+								@orderLine.Item.Id
+							</td>
+							<td>
+								@orderLine.Item.Name
+							</td>
+							<td>
+								@orderLine.Amount
+							</td>
+							<td>
+								@orderLine.TotalPrice
+							</td>
+							<td>
+								<form method="post">
+									<button asp-page-handler="Decrease" asp-route-itemId="@orderLine.Item.Id" asp-route-orderId="@Model.Order.Id" class="btn btn-primary btn-sm">
+										<i class="fa fa-minus-square"></i>
+									</button>
+									<button asp-page-handler="Increase" asp-route-itemId="@orderLine.Item.Id" asp-route-orderId="@Model.Order.Id" class="btn btn-primary btn-sm">
+										<i class="fa fa-plus-square"></i>
+									</button>
+								</form>
+							</td>
+						</tr>
+					}
+				}
+			</tbody>
+		</table>
+	</div>
+</form>
+
+<p>
+	<form method="post">
+		<label >Add new Item to Order : </label>
+		<select asp-for="ChosenItem" asp-items="@Model.ItemList"></select>
+		<button asp-page-handler="Add" asp-route-orderId="@Model.Order.Id" class="btn btn-primary btn-sm">
+			<i class="fa fa-plus-square"></i>
+		</button>
+	</form>
+</p>
+
+<p>
+	<a asp-page="/Order/GetAllOrders">Back to List</a>
+</p>

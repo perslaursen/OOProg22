@@ -1,0 +1,84 @@
+﻿@page
+@model ItemRazorV1.Pages.Customer.GetAllCustomersModel
+@{
+}
+
+<h1>Customers</h1>
+
+<div class="row">
+	<div class="col-4"><h5>Search Name</h5></div>
+	<div class="col-8"></div>
+</div>
+
+<div class="row">
+	<div class="col-4">
+		<form method="post" class="form-inline">
+			<div class="input-group mb-3">
+				<input asp-for="SearchString" class="form-control mr-1" placeholder="Enter search term" />
+				<input type="submit" asp-page-handler="NameSearch" value="Search" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+
+	<div class="col-8"></div>
+</div>
+
+<table class="table table-bordered table-hover table-striped table-opacity" width="60%">
+	<colgroup>
+		<col style="width : 5%">
+		<col style="width : 25%">
+		<col style="width : 25%">
+		<col style="width : 35%">
+		<col style="width : 10%">
+	</colgroup>
+	<thead>
+		<tr class="btn-secondary active">
+			<th>
+				Id
+			</th>
+			<th>
+				Name
+			</th>
+			<th>
+				E-Mail
+			</th>
+			<th>
+				Address
+			</th>
+			<th>
+				Actions
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Customers != null)
+		{
+			foreach (var customer in Model.Customers)
+			{
+				<tr class="btn-secondary">
+					<td>
+						@customer.Id
+					</td>
+					<td>
+						@customer.Name
+					</td>
+					<td>
+						@customer.Email
+					</td>
+					<td>
+						@customer.Address
+					</td>
+					<td>
+						<a class="btn btn-primary btn-sm" type="button" title="Edit" asp-page="EditCustomer" asp-route-id="@customer.Id"><i class="fa fa-edit"></i></a>
+						<a class="btn btn-primary btn-sm" type="button" title="CreateOrder" asp-page="/Order/CreateOrder" asp-route-custId="@customer.Id"> <i class="fa fa-shopping-cart"></i> </a>
+						<a class="btn btn-danger btn-sm " type="button" title="Delete" asp-page="DeleteCustomer" asp-route-id="@customer.Id"><i class="fa fa-trash"></i></a>
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
+
+<p>
+	<a class="btn btn-primary" asp-page="CreateCustomer"> Create a new Customer </a>
+</p>

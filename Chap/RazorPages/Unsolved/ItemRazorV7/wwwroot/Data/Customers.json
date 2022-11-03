@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 1,
+    "Name": "Anders",
+    "Email": "and@mail.dk",
+    "Address": "Stien 12"
+  },
+  {
+    "Id": 2,
+    "Name": "Bente",
+    "Email": "ben@mail.dk",
+    "Address": "Ved Skoven 8"
+  },
+  {
+    "Id": 3,
+    "Name": "Carina",
+    "Email": "car@mail.dk",
+    "Address": "Skolevej 87"
+  },
+  {
+    "Id": 4,
+    "Name": "Daniel",
+    "Email": "dan@mail.dk",
+    "Address": "Kirkevej 31"
+  },
+  {
+    "Id": 5,
+    "Name": "Ester",
+    "Email": "est@mail.dk",
+    "Address": "Griseryggen 103"
+  },
+  {
+    "Id": 6,
+    "Name": "Freja",
+    "Email": "fre@mail.dk",
+    "Address": "Askevej 14"
+  }
+]

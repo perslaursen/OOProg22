@@ -1,0 +1,31 @@
+﻿@page "{id:int}"
+@model ItemRazorV1.Pages.Item.EditItemModel
+@{
+}
+
+<form method="post">
+	<div class="form-group">
+		<label asp-for="Item.Id" class="control-lable"></label>
+		<input asp-for="Item.Id" class="form-control" readonly="@(true)"/>
+	</div>
+	<div class="form-group">
+		<label asp-for="Item.Name" class="control-lable"></label>
+		<input asp-for="Item.Name" class="form-control" />
+		<span asp-validation-for="Item.Name" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Item.Price" class="control-lable"></label>
+		<input asp-for="Item.Price" class="form-control" />
+		<span asp-validation-for="Item.Price" class="text-danger"></span>
+	</div>
+
+	<p>
+		<div class="form-group">
+			<input type="submit" value="Update" class="btn btn-primary" />
+		</div>
+	</p>
+</form>
+
+<p>
+	<a asp-page="/Item/GetAllItems">Back to List</a>
+</p>
