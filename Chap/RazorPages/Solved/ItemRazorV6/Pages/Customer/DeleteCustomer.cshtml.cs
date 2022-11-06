@@ -16,7 +16,6 @@ namespace ItemRazorV1.Pages.Customer
         [BindProperty]
         public Models.Customer Customer { get; set; }
 
-
         public IActionResult OnGet(int id)
         {
             Customer = _customerService.GetCustomer(id);

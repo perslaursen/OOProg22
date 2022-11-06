@@ -16,7 +16,6 @@ namespace ItemRazorV1.Pages.Item
         [BindProperty]
         public Models.Item Item { get; set; }
 
-
         public IActionResult OnGet(int id)
         {
             Item = _itemService.GetItem(id);
