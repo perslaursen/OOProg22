@@ -84,16 +84,7 @@
           "Name": "Mouse Pad",
           "Price": 169
         },
-        "Amount": 2
-      },
-      {
-        "Id": 1,
-        "Item": {
-          "Id": 3,
-          "Name": "Keyboard",
-          "Price": 999
-        },
-        "Amount": 2
+        "Amount": 3
       },
       {
         "Id": 1,

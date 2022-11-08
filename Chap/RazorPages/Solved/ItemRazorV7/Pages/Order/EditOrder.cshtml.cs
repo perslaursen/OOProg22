@@ -1,26 +1,27 @@
 using ItemRazorV1.Models;
-using ItemRazorV1.Service.Repositories.Model;
+using ItemRazorV1.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ItemRazorV1.Pages.Order
 {
-    public class ViewOrderModel : PageModel
+    public class EditOrderModel : PageModel
     {
-        private IOrderRepository _orderRepo;
-        private IItemRepository _itemRepo;
+        private IOrderService _orderService;
+        private IItemService _itemService;
 
-        public ViewOrderModel(IOrderRepository orderRepo, IItemRepository itemRepo)
+        public EditOrderModel(IOrderService orderService, IItemService itemService)
         {
-            _orderRepo = orderRepo;
-            _itemRepo = itemRepo;
+            _orderService = orderService;
+            _itemService = itemService;
 
-            ItemList = _itemRepo.GetAll().Select(i => new SelectListItem { Text = i.Name, Value = i.Id.ToString() }).ToList();
+            List<Models.Item> items = _itemService.GetItems();
+            ItemList = items.Select(i => new SelectListItem { Text = i.Name, Value = i.Id.ToString() }).ToList();
         }
 
         [BindProperty]
-        public Models.Order Order { get; set; }
+        public Models.Order Order{ get; set; }
 
 
         [BindProperty]
@@ -30,11 +31,8 @@ namespace ItemRazorV1.Pages.Order
 
         public IActionResult OnGet(int id)
         {
-            Models.Order? order = _orderRepo.Read(id);
-
-            if (order != null)
-                Order = order;
-            else
+            Order = _orderService.GetOrder(id);
+            if (Order == null)
                 return RedirectToPage("/NotFound"); //NotFound er ikke defineret endnu
 
             return Page();
@@ -47,8 +45,7 @@ namespace ItemRazorV1.Pages.Order
 
         public IActionResult OnPostDecrease(int itemId, int orderId)
         {
-            Order = _orderRepo.Read(orderId);
-
+            Order = _orderService.GetOrder(orderId);
             Models.Order updOrder = CloneOrder(Order);
             OrderLine? chosenOrderLine = updOrder.GetOrderLine(itemId);
 
@@ -60,17 +57,16 @@ namespace ItemRazorV1.Pages.Order
                     updOrder.Items.Remove(chosenOrderLine);
             }
 
-            _orderRepo.Update(updOrder.Id, updOrder);
+            _orderService.UpdateOrder(updOrder);
 
-            Order = _orderRepo.Read(orderId);
+            Order = _orderService.GetOrder(orderId);
 
             return Page();
         }
 
         public IActionResult OnPostIncrease(int itemId, int orderId)
         {
-            Order = _orderRepo.Read(orderId);
-
+            Order = _orderService.GetOrder(orderId);
             Models.Order updOrder = CloneOrder(Order);
             OrderLine? chosenOrderLine = updOrder.GetOrderLine(itemId);
 
@@ -78,13 +74,13 @@ namespace ItemRazorV1.Pages.Order
                 chosenOrderLine.Amount++;
             else
             {
-                Models.Item chosenItem = _itemRepo.Read(itemId);
+                Models.Item chosenItem = _itemService.GetItem(itemId);
                 updOrder.Items.Add(new OrderLine(chosenItem, 1));
             }
 
-            _orderRepo.Update(updOrder.Id, updOrder);
+            _orderService.UpdateOrder(updOrder);
 
-            Order = _orderRepo.Read(orderId);
+            Order = _orderService.GetOrder(orderId);
 
             return Page();
         }

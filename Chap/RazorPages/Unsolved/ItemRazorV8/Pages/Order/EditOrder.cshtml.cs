@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ItemRazorV1.Pages.Order
 {
-    public class ViewOrderModel : PageModel
+    public class EditOrderModel : PageModel
     {
         private IOrderService _orderService;
         private IItemService _itemService;
 
-        public ViewOrderModel(IOrderService orderService, IItemService itemService)
+        public EditOrderModel(IOrderService orderService, IItemService itemService)
         {
             _orderService = orderService;
             _itemService = itemService;

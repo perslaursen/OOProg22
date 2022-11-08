@@ -46,7 +46,7 @@ namespace ItemRazorV1.Pages.Order
 
                 _orderService.AddOrder(newOrder);
 
-                return RedirectToPage("ViewOrder", new { id = orderId });
+                return RedirectToPage("EditOrder", new { id = orderId });
             }
 
             return RedirectToPage("GetAllOrders");

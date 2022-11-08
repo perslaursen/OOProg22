@@ -106,5 +106,26 @@
       }
     ],
     "Remark": "This is the third order"
+  },
+  {
+    "Id": 4,
+    "Customer": {
+      "Id": 3,
+      "Name": "Carina",
+      "Email": "car@mail.dk",
+      "Address": "Skolevej 87"
+    },
+    "Items": [
+      {
+        "Id": 1,
+        "Item": {
+          "Id": 3,
+          "Name": "Keyboard",
+          "Price": 899
+        },
+        "Amount": 1
+      }
+    ],
+    "Remark": "AGDGDGD"
   }
 ]

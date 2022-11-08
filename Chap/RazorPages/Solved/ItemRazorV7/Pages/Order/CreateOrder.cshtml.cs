@@ -1,4 +1,3 @@
-using ItemRazorV1.Models;
 using ItemRazorV1.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -46,7 +45,7 @@ namespace ItemRazorV1.Pages.Order
 
                 _orderService.AddOrder(newOrder);
 
-                return RedirectToPage("ViewOrder", new { id = orderId });
+                return RedirectToPage("EditOrder", new { id = orderId });
             }
 
             return RedirectToPage("GetAllOrders");

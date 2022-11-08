@@ -84,7 +84,7 @@
           "Name": "Mouse Pad",
           "Price": 169
         },
-        "Amount": 2
+        "Amount": 3
       },
       {
         "Id": 1,
@@ -103,25 +103,18 @@
           "Price": 649
         },
         "Amount": 1
-      }
-    ],
-    "Remark": "This is the third order"
-  },
-  {
-    "Id": 4,
-    "Customer": null,
-    "Items": [
+      },
       {
-        "Id": 2,
+        "Id": 1,
         "Item": {
           "Id": 2,
           "Name": "Monitor",
           "Price": 2399
         },
-        "Amount": 1
+        "Amount": 4
       }
     ],
-    "Remark": null
+    "Remark": "This is the third order"
   },
   {
     "Id": 5,
@@ -140,6 +133,15 @@
           "Price": 5999
         },
         "Amount": 1
+      },
+      {
+        "Id": 1,
+        "Item": {
+          "Id": 4,
+          "Name": "Mouse",
+          "Price": 399
+        },
+        "Amount": 7
       }
     ],
     "Remark": "fbcvvbcb"

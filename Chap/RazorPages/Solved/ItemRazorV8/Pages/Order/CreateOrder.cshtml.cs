@@ -39,7 +39,7 @@ namespace ItemRazorV1.Pages.Order
                 Models.Order newOrder = new Models.Order(0, customer) { Remark = OrderRemark };
                 int orderId = _orderRepo.Create(newOrder).Id;
 
-                return RedirectToPage("ViewOrder", new { id = orderId });
+                return RedirectToPage("EditOrder", new { id = orderId });
             }
 
             return RedirectToPage("GetAllOrders");
