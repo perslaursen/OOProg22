@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "Name": "PC",
+    "Price": 5999
+  },
+  {
+    "Id": 2,
+    "Name": "Monitor",
+    "Price": 2399
+  },
+  {
+    "Id": 3,
+    "Name": "Keyboard",
+    "Price": 899
+  },
+  {
+    "Id": 4,
+    "Name": "Mouse",
+    "Price": 399
+  },
+  {
+    "Id": 6,
+    "Name": "Charger",
+    "Price": 649
+  },
+  {
+    "Id": 7,
+    "Name": "Mouse Pad",
+    "Price": 169
+  },
+  {
+    "Id": 10,
+    "Name": "USB Cable (10 M)",
+    "Price": 139
+  },
+  {
+    "Id": 9,
+    "Name": "Chair",
+    "Price": 1079
+  }
+]

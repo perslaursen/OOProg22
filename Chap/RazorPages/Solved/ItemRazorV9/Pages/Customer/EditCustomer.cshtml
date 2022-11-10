@@ -1,0 +1,36 @@
+﻿@page
+@model ItemRazorV1.Pages.Customer.EditCustomerModel
+@{
+}
+
+<form method="post">
+	<div class="form-group">
+		<label asp-for="Data.Id" class="control-label"></label>
+		<input asp-for="Data.Id" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Data.Name" class="control-label"></label>
+		<input asp-for="Data.Name" class="form-control" />
+		<span asp-validation-for="Data.Name" class="text-danger"></span>
+	</div>
+		<div class="form-group">
+		<label asp-for="Data.Email" class="control-label"></label>
+		<input asp-for="Data.Email" class="form-control" />
+		<span asp-validation-for="Data.Email" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Data.Address" class="control-label"></label>
+		<input asp-for="Data.Address" class="form-control" />
+		<span asp-validation-for="Data.Address" class="text-danger"></span>
+	</div>
+
+	<p>
+		<div class="form-group">
+			<input type="submit" value="Update" class="btn btn-primary" />
+		</div>
+	</p>
+</form>
+
+<p>
+	<a asp-page="/Customer/GetAllCustomers">Back to List</a>
+</p>

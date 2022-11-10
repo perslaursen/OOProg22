@@ -1,0 +1,131 @@
+[
+  {
+    "Id": 1,
+    "Customer": {
+      "Id": 1,
+      "Name": "Anders",
+      "Email": "and@mail.dk",
+      "Address": "Stien 12"
+    },
+    "Items": [
+      {
+        "Id": 1,
+        "Item": {
+          "Id": 1,
+          "Name": "PC",
+          "Price": 5999
+        },
+        "Amount": 1
+      },
+      {
+        "Id": 2,
+        "Item": {
+          "Id": 2,
+          "Name": "Monitor",
+          "Price": 1999
+        },
+        "Amount": 2
+      }
+    ],
+    "Remark": "This is the first order"
+  },
+  {
+    "Id": 2,
+    "Customer": {
+      "Id": 3,
+      "Name": "Carina",
+      "Email": "car@mail.dk",
+      "Address": "Skolevej 87"
+    },
+    "Items": [
+      {
+        "Id": 3,
+        "Item": {
+          "Id": 3,
+          "Name": "Keyboard",
+          "Price": 999
+        },
+        "Amount": 3
+      }
+    ],
+    "Remark": "This is the second order"
+  },
+  {
+    "Id": 3,
+    "Customer": {
+      "Id": 1,
+      "Name": "Anders",
+      "Email": "and@mail.dk",
+      "Address": "Stien 12"
+    },
+    "Items": [
+      {
+        "Id": 4,
+        "Item": {
+          "Id": 1,
+          "Name": "PC",
+          "Price": 5999
+        },
+        "Amount": 1
+      },
+      {
+        "Id": 6,
+        "Item": {
+          "Id": 4,
+          "Name": "Mouse",
+          "Price": 399
+        },
+        "Amount": 3
+      },
+      {
+        "Id": 7,
+        "Item": {
+          "Id": 7,
+          "Name": "Mouse Pad",
+          "Price": 169
+        },
+        "Amount": 2
+      },
+      {
+        "Id": 1,
+        "Item": {
+          "Id": 3,
+          "Name": "Keyboard",
+          "Price": 999
+        },
+        "Amount": 2
+      },
+      {
+        "Id": 1,
+        "Item": {
+          "Id": 6,
+          "Name": "Charger",
+          "Price": 649
+        },
+        "Amount": 1
+      }
+    ],
+    "Remark": "This is the third order"
+  },
+  {
+    "Id": 4,
+    "Customer": {
+      "Id": 3,
+      "Name": "Carina",
+      "Email": "car@mail.dk",
+      "Address": "Skolevej 87"
+    },
+    "Items": [
+      {
+        "Id": 1,
+        "Item": {
+          "Id": 3,
+          "Name": "Keyboard",
+          "Price": 899
+        },
+        "Amount": 1
+      }
+    ],
+    "Remark": "AGDGDGD"
+  }
+]
