@@ -1,3 +1,3 @@
 ﻿
-SimpleUserDialog simpleDlg = new SimpleUserDialog();
-simpleDlg.Run();
+StoreUserDialog dlg = new StoreUserDialog();
+dlg.Run();
