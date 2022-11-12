@@ -16,25 +16,25 @@ namespace ItemRazorV1.Pages.Order
             _orderRepo = orderRepo;
             _itemRepo = itemRepo;
 
-            ItemList = _itemRepo.GetAll().Select(i => new SelectListItem { Text = i.Name, Value = i.Id.ToString() }).ToList();
+            List<Models.Item> selectableItems = _itemRepo.GetAll().ToList();
+            ItemList = new SelectList(selectableItems, nameof(Models.Item.Id), nameof(Models.Item.Name));
         }
+
+        public int OrderId => Order?.Id ?? 0;
 
         [BindProperty]
         public Models.Order Order { get; set; }
 
 
         [BindProperty]
-        public string ChosenItem{ get; set; }
+        public int ChosenItemId { get; set; }
 
-        public List<SelectListItem> ItemList { get; set; }
+        public SelectList ItemList { get; set; }
 
         public IActionResult OnGet(int id)
         {
-            Models.Order? order = _orderRepo.Read(id);
-
-            if (order != null)
-                Order = order;
-            else
+            Order = _orderRepo.Read(id);
+            if (Order == null)
                 return RedirectToPage("/NotFound"); //NotFound er ikke defineret endnu
 
             return Page();
@@ -45,10 +45,9 @@ namespace ItemRazorV1.Pages.Order
             return Page();
         }
 
-        public IActionResult OnPostDecrease(int itemId, int orderId)
+        public IActionResult OnPostDecrease(int itemId)
         {
-            Order = _orderRepo.Read(orderId);
-
+            Order = _orderRepo.Read(OrderId);
             Models.Order updOrder = CloneOrder(Order);
             OrderLine? chosenOrderLine = updOrder.GetOrderLine(itemId);
 
@@ -60,17 +59,16 @@ namespace ItemRazorV1.Pages.Order
                     updOrder.Items.Remove(chosenOrderLine);
             }
 
-            _orderRepo.Update(updOrder.Id, updOrder);
+            _orderRepo.Update(OrderId, updOrder);
 
-            Order = _orderRepo.Read(orderId);
+            Order = _orderRepo.Read(OrderId);
 
             return Page();
         }
 
-        public IActionResult OnPostIncrease(int itemId, int orderId)
+        public IActionResult OnPostIncrease(int itemId)
         {
-            Order = _orderRepo.Read(orderId);
-
+            Order = _orderRepo.Read(OrderId);
             Models.Order updOrder = CloneOrder(Order);
             OrderLine? chosenOrderLine = updOrder.GetOrderLine(itemId);
 
@@ -82,16 +80,16 @@ namespace ItemRazorV1.Pages.Order
                 updOrder.Items.Add(new OrderLine(chosenItem, 1));
             }
 
-            _orderRepo.Update(updOrder.Id, updOrder);
+            _orderRepo.Update(OrderId, updOrder);
 
-            Order = _orderRepo.Read(orderId);
+            Order = _orderRepo.Read(OrderId);
 
             return Page();
         }
 
-        public IActionResult OnPostAdd(int orderId)
+        public IActionResult OnPostAdd()
         {
-            return OnPostIncrease(int.Parse(ChosenItem ?? "0"), orderId);
+            return OnPostIncrease(ChosenItemId);
         }
 
         private Models.Order CloneOrder(Models.Order order)

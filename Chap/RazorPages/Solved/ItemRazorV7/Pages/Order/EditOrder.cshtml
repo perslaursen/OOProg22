@@ -1,9 +1,9 @@
-﻿@page
+﻿@page "{id:int}"
 @model ItemRazorV1.Pages.Order.EditOrderModel
 @{
 }
 
-<form method="get">
+<form method="post">
 	<div class="form-group">
 		<label asp-for="Order.Id" class="control-label"></label>
 		<input asp-for="Order.Id" class="form-control" readonly="@(true)" />
@@ -73,14 +73,12 @@
 								@orderLine.TotalPrice
 							</td>
 							<td>
-								<form method="post">
-									<button asp-page-handler="Decrease" asp-route-itemId="@orderLine.Item.Id" asp-route-orderId="@Model.Order.Id" class="btn btn-primary btn-sm">
-										<i class="fa fa-minus-square"></i>
-									</button>
-									<button asp-page-handler="Increase" asp-route-itemId="@orderLine.Item.Id" asp-route-orderId="@Model.Order.Id" class="btn btn-primary btn-sm">
-										<i class="fa fa-plus-square"></i>
-									</button>
-								</form>
+								<button asp-page-handler="Decrease" asp-route-itemId="@orderLine.Item.Id" class="btn btn-primary btn-sm">
+									<i class="fa fa-minus-square"></i>
+								</button>
+								<button asp-page-handler="Increase" asp-route-itemId="@orderLine.Item.Id" class="btn btn-primary btn-sm">
+									<i class="fa fa-plus-square"></i>
+								</button>
 							</td>
 						</tr>
 					}
@@ -93,8 +91,8 @@
 <p>
 	<form method="post">
 		<label >Add new Item to Order : </label>
-		<select asp-for="ChosenItem" asp-items="@Model.ItemList"></select>
-		<button asp-page-handler="Add" asp-route-orderId="@Model.Order.Id" class="btn btn-primary btn-sm">
+		<select asp-for="ChosenItemId" asp-items="@Model.ItemList"></select>
+		<button asp-page-handler="Add" class="btn btn-primary btn-sm">
 			<i class="fa fa-plus-square"></i>
 		</button>
 	</form>

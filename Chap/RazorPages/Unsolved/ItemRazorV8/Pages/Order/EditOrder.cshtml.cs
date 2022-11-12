@@ -16,18 +16,20 @@ namespace ItemRazorV1.Pages.Order
             _orderService = orderService;
             _itemService = itemService;
 
-            List<Models.Item> items = _itemService.GetItems();
-            ItemList = items.Select(i => new SelectListItem { Text = i.Name, Value = i.Id.ToString() }).ToList();
+            List<Models.Item> selectableItems = _itemService.GetItems();
+            ItemList = new SelectList(selectableItems, nameof(Models.Item.Id), nameof(Models.Item.Name));
         }
 
-        [BindProperty]
-        public Models.Order Order{ get; set; }
-
+        public int OrderId => Order?.Id ?? 0;
 
         [BindProperty]
-        public string ChosenItem{ get; set; }
+        public Models.Order Order { get; set; }
 
-        public List<SelectListItem> ItemList { get; set; }
+
+        [BindProperty]
+        public int ChosenItemId { get; set; }
+
+        public SelectList ItemList { get; set; }
 
         public IActionResult OnGet(int id)
         {
@@ -43,9 +45,9 @@ namespace ItemRazorV1.Pages.Order
             return Page();
         }
 
-        public IActionResult OnPostDecrease(int itemId, int orderId)
+        public IActionResult OnPostDecrease(int itemId)
         {
-            Order = _orderService.GetOrder(orderId);
+            Order = _orderService.GetOrder(OrderId);
             Models.Order updOrder = CloneOrder(Order);
             OrderLine? chosenOrderLine = updOrder.GetOrderLine(itemId);
 
@@ -59,14 +61,14 @@ namespace ItemRazorV1.Pages.Order
 
             _orderService.UpdateOrder(updOrder);
 
-            Order = _orderService.GetOrder(orderId);
+            Order = _orderService.GetOrder(OrderId);
 
             return Page();
         }
 
-        public IActionResult OnPostIncrease(int itemId, int orderId)
+        public IActionResult OnPostIncrease(int itemId)
         {
-            Order = _orderService.GetOrder(orderId);
+            Order = _orderService.GetOrder(OrderId);
             Models.Order updOrder = CloneOrder(Order);
             OrderLine? chosenOrderLine = updOrder.GetOrderLine(itemId);
 
@@ -80,14 +82,14 @@ namespace ItemRazorV1.Pages.Order
 
             _orderService.UpdateOrder(updOrder);
 
-            Order = _orderService.GetOrder(orderId);
+            Order = _orderService.GetOrder(OrderId);
 
             return Page();
         }
 
-        public IActionResult OnPostAdd(int orderId)
+        public IActionResult OnPostAdd()
         {
-            return OnPostIncrease(int.Parse(ChosenItem ?? "0"), orderId);
+            return OnPostIncrease(ChosenItemId);
         }
 
         private Models.Order CloneOrder(Models.Order order)
