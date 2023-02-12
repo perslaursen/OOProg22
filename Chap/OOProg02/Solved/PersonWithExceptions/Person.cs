@@ -7,7 +7,7 @@ public class Person
     /// <summary>
     /// Height in Meters (must be in the interval 0.2 to 3.0)
     /// </summary>
-    public double Height // Height in Meters (must be in the interval 0.2 to 3.0)
+    public double Height
     {
         get { return _height; }
         set
@@ -22,7 +22,7 @@ public class Person
     /// <summary>
     /// Weight in Kilograms (must be in the interval 0.2 to 500.0)
     /// </summary>
-    public double Weight // Weight in Kilograms (must be in the interval 0.2 to 500.0)
+    public double Weight
     {
         get { return _weight; }
         set
