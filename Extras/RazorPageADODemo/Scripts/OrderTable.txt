@@ -1,0 +1,23 @@
+﻿
+CREATE TABLE [dbo].[Order](
+	[Id] [int] NOT NULL,
+	[CustomerId] [int] NULL,
+	[ItemId] [int] NULL,
+	[Amount] [int] NOT NULL,
+PRIMARY KEY CLUSTERED ([Id] ASC)
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [FK_Order_Customer] FOREIGN KEY([CustomerId])
+REFERENCES [dbo].[Customer] ([Id])
+GO
+
+ALTER TABLE [dbo].[Order] CHECK CONSTRAINT [FK_Order_Customer]
+GO
+
+ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [FK_Order_Item] FOREIGN KEY([ItemId])
+REFERENCES [dbo].[Item] ([Id])
+GO
+
+ALTER TABLE [dbo].[Order] CHECK CONSTRAINT [FK_Order_Item]
+GO

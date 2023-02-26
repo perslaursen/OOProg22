@@ -1,0 +1,30 @@
+﻿@page
+@model RazorPageADODemo.Pages.Order.EditOrderModel
+@{
+}
+
+<form method="post">
+	<div class="form-group">
+		<label asp-for="OrderId" class="control-label"></label>
+		<input asp-for="OrderId" class="form-control" readonly="@(true)"/>
+	</div>
+	<div class="form-group">
+		<label asp-for="ChosenCustomerId" class="control-label"></label>
+		<select asp-for="ChosenCustomerId" asp-items="@Model.CustomerList" class="form-control"></select>
+	</div>
+	<div class="form-group">
+		<label asp-for="ChosenItemId" class="control-label"></label>
+		<select asp-for="ChosenItemId" asp-items="@Model.ItemList" class="form-control"></select>
+	</div>
+	<div class="form-group">
+		<label asp-for="Amount" class="control-label"></label>
+		<input asp-for="Amount" class="form-control" />
+		<span asp-validation-for="@Model.Amount" class="text-danger"></span>
+	</div>
+
+	<p>
+		<div class="form-group">
+			<input type="submit" value="Update" class="btn btn-primary" />
+		</div>
+	</p>
+</form>

@@ -1,0 +1,58 @@
+﻿@page
+@model RazorPageADODemo.Pages.Item.GetAllItemsModel
+@{
+}
+
+<h1>Items</h1>
+
+<table class="table table-bordered table-hover table-striped" width="60%">
+	<colgroup>
+		<col style="width : 5%">
+		<col style="width : 60%">
+		<col style="width : 25%">
+		<col style="width : 10%">
+	</colgroup>
+	<thead>
+		<tr class="btn-primary active">
+			<th>
+				Id
+			</th>
+			<th>
+				Name
+			</th>
+			<th>
+				Price
+			</th>
+			<th>
+				Actions
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Data != null)
+		{
+			foreach (var item in Model.Data)
+			{
+				<tr>
+					<td>
+						@item.ID
+					</td>
+					<td>
+						@item.Name
+					</td>
+					<td>
+						@item.Price
+					</td>
+					<td>
+						<a class="btn btn-primary btn-sm" type="button" title="Edit" asp-page="EditItem" asp-route-id="@item.ID"><i class="fa fa-edit"></i></a>
+						<a class="btn btn-danger btn-sm " type="button" title="Delete" asp-page="DeleteItem" asp-route-id="@item.ID"><i class="fa fa-trash"></i></a>
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
+
+<p>
+	<a class="btn btn-primary" asp-page="CreateItem"> Create a new Item </a>
+</p>
