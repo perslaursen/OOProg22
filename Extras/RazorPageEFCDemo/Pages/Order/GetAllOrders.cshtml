@@ -1,0 +1,65 @@
+﻿@page
+@model RazorPageEFCDemo.Pages.Order.GetAllOrdersModel
+@{
+}
+
+<h1>Orders</h1>
+
+<table class="table table-bordered table-hover table-striped" width="60%">
+	<colgroup>
+		<col style="width : 5%">
+		<col style="width : 35%">
+		<col style="width : 35%">
+		<col style="width : 15%">
+		<col style="width : 10%">
+	</colgroup>
+	<thead>
+		<tr class="btn-primary active">
+			<th>
+				Id
+			</th>
+			<th>
+				Customer
+			</th>
+			<th>
+				Item
+			</th>
+			<th>
+				Amount
+			</th>
+			<th>
+				Actions
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Data != null)
+		{
+			foreach (var order in Model.Data)
+			{
+				<tr>
+					<td>
+						@order.ID
+					</td>
+					<td>
+						@(order.Customer?.Name ?? "(None)")
+					</td>
+					<td>
+						@(order.Item?.Name ?? "(None)")
+					</td>
+					<td>
+						@order.Amount
+					</td>
+					<td>
+						<a class="btn btn-primary btn-sm" type="button" title="Edit" asp-page="EditOrder" asp-route-id="@order.ID"><i class="fa fa-edit"></i></a>
+						<a class="btn btn-danger btn-sm " type="button" title="Delete" asp-page="DeleteOrder" asp-route-id="@order.ID"><i class="fa fa-trash"></i></a>
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
+
+<p>
+	<a class="btn btn-primary" asp-page="CreateOrder"> Create a new Order </a>
+</p>

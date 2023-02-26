@@ -1,0 +1,65 @@
+﻿@page
+@model RazorPageEFCDemo.Pages.Customer.GetAllCustomersModel
+@{
+}
+
+<h1>Customers</h1>
+
+<table class="table table-bordered table-hover table-striped" width="60%">
+	<colgroup>
+		<col style="width : 5%">
+		<col style="width : 25%">
+		<col style="width : 25%">
+		<col style="width : 35%">
+		<col style="width : 10%">
+	</colgroup>
+	<thead>
+		<tr class="btn-primary active">
+			<th>
+				Id
+			</th>
+			<th>
+				Name
+			</th>
+			<th>
+				E-Mail
+			</th>
+			<th>
+				Address
+			</th>
+			<th>
+				Actions
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Data != null)
+		{
+			foreach (var customer in Model.Data)
+			{
+				<tr>
+					<td>
+						@customer.ID
+					</td>
+					<td>
+						@customer.Name
+					</td>
+					<td>
+						@customer.Email
+					</td>
+					<td>
+						@customer.Address
+					</td>
+					<td>
+						<a class="btn btn-primary btn-sm" type="button" title="Edit" asp-page="EditCustomer" asp-route-id="@customer.ID"><i class="fa fa-edit"></i></a>
+						<a class="btn btn-danger btn-sm " type="button" title="Delete" asp-page="DeleteCustomer" asp-route-id="@customer.ID"><i class="fa fa-trash"></i></a>
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
+
+<p>
+	<a class="btn btn-primary" asp-page="CreateCustomer"> Create a new Customer </a>
+</p>
