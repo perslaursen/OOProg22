@@ -91,7 +91,7 @@
 <p>
 	<form method="post">
 		<label >Add new Item to Order : </label>
-		<select asp-for="ChosenItemId" asp-items="@Model.ItemList"></select>
+		<select asp-for="ChosenItemId" asp-items="@Model.ItemList" class="form-control"></select>
 		<button asp-page-handler="Add" class="btn btn-primary btn-sm">
 			<i class="fa fa-plus-square"></i>
 		</button>

@@ -28,7 +28,7 @@ public class PalindromeChecker : IPalindromeChecker
     private bool IsPalindromeInternal(string phrase)
     {
         // Trivial case
-        if (phrase.Length < 2)
+        if (phrase == null || phrase.Length < 2)
         {
             return true;
         }
@@ -49,5 +49,33 @@ public class PalindromeChecker : IPalindromeChecker
         // Combination :
         //   phrase is a palindrome if BOTH subproblems are true.
         return firstLastEqual && isRestPalindrome;
+    }
+
+    private bool IsPalindromeInternalNoRecursion(string phrase)
+    {
+        // Trivial case
+        if (phrase == null || phrase.Length < 2)
+        {
+            return true;
+        }
+
+        int indexFront = 0;   
+        int indexBack = phrase.Length - 1;
+
+        while (indexFront < indexBack)
+        {
+            string firstLetter = phrase.Substring(0, 1);
+            string lastLetter = phrase.Substring(phrase.Length - 1, 1);
+
+            if (firstLetter != lastLetter)
+            {
+                return false;
+            }
+
+            indexFront++;
+            indexBack--;
+        }
+
+        return true;
     }
 }

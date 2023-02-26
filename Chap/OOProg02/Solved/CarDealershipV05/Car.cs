@@ -5,42 +5,20 @@
 /// </summary>
 public class Car
 {
-    #region Instance fields
-    private string _licensePlate;
-    private string _brand;
-    private string _model;
-    private int _price;
+    #region Properties
+    public string LicensePlate { get; }
+    public string Brand { get; }
+    public string Model { get; }
+    public int Price { get; }
     #endregion
 
     #region Constructor
     public Car(string licensePlate, string brand, string model, int price)
     {
-        _licensePlate = licensePlate;
-        _brand = brand;
-        _model = model;
-        _price = price;
-    }
-    #endregion
-
-    #region Properties
-    public string LicensePlate
-    {
-        get { return _licensePlate; }
-    }
-
-    public string Brand
-    {
-        get { return _brand; }
-    }
-
-    public string Model
-    {
-        get { return _model; }
-    }
-
-    public int Price
-    {
-        get { return _price; }
+        LicensePlate = licensePlate;
+        Brand = brand;
+        Model = model;
+        Price = price;
     }
     #endregion
 
@@ -50,7 +28,7 @@ public class Car
         return LicensePlate + ": A " + Brand + " " + Model + ", price is " + Price;
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         return (obj != null && LicensePlate.Equals(((Car)obj).LicensePlate));
     }
@@ -58,13 +36,13 @@ public class Car
     public static bool operator ==(Car c1, Car c2)
     {
         // If both are null, or both are same instance, return true.
-        if (System.Object.ReferenceEquals(c1, c2))
+        if (ReferenceEquals(c1, c2))
         {
             return true;
         }
 
         // If one is null, but not both, return false.
-        if (((object)c1 == null) || ((object)c2 == null))
+        if ((c1 is null) || (c2 is null))
         {
             return false;
         }

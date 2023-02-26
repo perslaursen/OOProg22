@@ -1,35 +1,18 @@
 ﻿
 public class Dog
 {
-    #region Instance fields
-    private string _name;
-    private int _height;
-    private double _weight;
+    #region Properties
+    public string Name { get; }
+    public int Height { get; }
+    public double Weight { get; }
     #endregion
 
     #region Constructor
     public Dog(string name, int height, double weight)
     {
-        _name = name;
-        _height = height;
-        _weight = weight;
-    }
-    #endregion
-
-    #region Properties
-    public string Name
-    {
-        get { return _name; }
-    }
-
-    public int Height
-    {
-        get { return _height; }
-    }
-
-    public double Weight
-    {
-        get { return _weight; }
+        Name = name;
+        Height = height;
+        Weight = weight;
     }
     #endregion
 
