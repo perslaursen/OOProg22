@@ -33,8 +33,6 @@ public class AirportSystem
             .ToList();
 
         return boardingPasses;
-
-        return boardingPasses;
     }
 
     /// <summary>
