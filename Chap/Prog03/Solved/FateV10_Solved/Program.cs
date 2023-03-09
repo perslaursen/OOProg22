@@ -14,11 +14,11 @@ Console.WriteLine(heroA);
 Console.WriteLine();
 
 // Get the list of best Gear for Sun affinity.
-List<Gear> gearSun = heroA.BestGear(AffinityType.Sun);
+List<Gear?> gearSun = heroA.BestGear(AffinityType.Sun);
 Console.WriteLine("Best Gear for Sun affinity");
-foreach (Gear g in gearSun)
+foreach (Gear? g in gearSun)
 {
-    Console.WriteLine(g);
+    Console.WriteLine((g is null) ? "(None)" : g);
 }
 Console.WriteLine();
 

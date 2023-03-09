@@ -7,11 +7,11 @@
 public class GearBuild
 {
     #region Instance fields and Constructor
-    private Dictionary<GearSlot, Gear> _gear;
+    private Dictionary<GearSlot, Gear?> _gear;
 
     public GearBuild()
     {
-        _gear = new Dictionary<GearSlot, Gear>();
+        _gear = new Dictionary<GearSlot, Gear?>();
 
         // Initially, all Gear slots are empty.
         foreach (GearSlot slot in Setup.GearSlots)
@@ -30,7 +30,7 @@ public class GearBuild
     /// </summary>
     public int PowerLevel
     {
-        get { return _gear.Values.ToList().Sum(g => g.PowerLevel) / _gear.Count; }
+        get { return _gear.Values.ToList().Sum(g => g?.PowerLevel ?? 0) / _gear.Count; }
     }
     #endregion
 

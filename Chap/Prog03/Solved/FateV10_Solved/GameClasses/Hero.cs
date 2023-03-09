@@ -78,7 +78,7 @@ public class Hero
     /// In short, the list should define the best possible set of Gear
     /// for the hero, for the given Affinity.
     /// </summary>
-    public List<Gear> BestGear(AffinityType affinity)
+    public List<Gear?> BestGear(AffinityType affinity)
     {
         return Setup.GearSlots.Select(slot => BestGearInSlot(slot, affinity)).ToList();
     }
@@ -129,7 +129,7 @@ public class Hero
     /// Simply converts an "empty" gear slot to a
     /// PowerLevel value of 0 (zero).
     /// </summary>
-    public int GearToPowerLevel(Gear gear)
+    public int GearToPowerLevel(Gear? gear)
     {
         return gear?.PowerLevel ?? 0;
     }

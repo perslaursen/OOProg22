@@ -40,7 +40,7 @@ public class GearGenerator
 
     private static Dictionary<GearSlot, List<string>> _gearSynonymes = new Dictionary<GearSlot, List<string>>
         {
-            {GearSlot.Head, new List<string> {"Helm", "Hood", "Crown", "Cowl", "Car"}},
+            {GearSlot.Head, new List<string> {"Helm", "Hood", "Crown", "Cowl", "Headband"}},
             {GearSlot.Chest, new List<string> {"Chestplate", "Vestments", "Robe", "Tunic"}},
             {GearSlot.Hands, new List<string> {"Gloves", "Handwraps", "Handguards", "Fistbands"}},
             {GearSlot.Legs, new List<string> {"Leggings", "Pants", "Trousers", "Britches", "Kilt"}},

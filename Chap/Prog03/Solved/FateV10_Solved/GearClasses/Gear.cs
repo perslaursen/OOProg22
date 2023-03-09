@@ -40,8 +40,11 @@ public class Gear : IComparable<Gear>
     /// Note that Gear implements IComparable, such that Gear objects
     /// can be compared (according to PowerLevel).
     /// </summary>
-    public int CompareTo(Gear other)
+    public int CompareTo(Gear? other)
     {
+        if (other is null)
+            return 1;
+
         return PowerLevel - other.PowerLevel;
     }
 

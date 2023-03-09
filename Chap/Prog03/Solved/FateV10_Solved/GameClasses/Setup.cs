@@ -21,12 +21,12 @@ public class Setup
     }
 
     // Weight factors for Gear conrtibution to PowerLevel (not used yet)
-    public static Dictionary<GearSlot, int> GearContributionWeight;
+    public static Dictionary<GearSlot, int> GearContributionWeight = new Dictionary<GearSlot, int>();
 
     #region Constructor
     public Setup()
     {
-        GearContributionWeight = new Dictionary<GearSlot, int>();
+        GearContributionWeight.Clear();
 
         GearContributionWeight.Add(GearSlot.Head, 20);
         GearContributionWeight.Add(GearSlot.Chest, 20);

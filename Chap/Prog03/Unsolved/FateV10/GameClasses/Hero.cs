@@ -78,9 +78,9 @@ public class Hero
     /// In short, the list should define the best possible set of Gear
     /// for the hero, for the given Affinity.
     /// </summary>
-    public List<Gear> BestGear(AffinityType affinity)
+    public List<Gear?> BestGear(AffinityType affinity)
     {
-        return new List<Gear>(); // TODO - Implement correctly
+        return new List<Gear?>(); // TODO - Implement correctly
     }
 
     /// <summary>
@@ -140,7 +140,7 @@ public class Hero
     /// Selects the best-in-slot Gear object for the Hero, subjected to the
     /// selection criterion provided by the selector parameter.
     /// </summary>
-    public Gear BestGearInSlot(GearSlot slot, Func<Gear, bool> selector)
+    public Gear? BestGearInSlot(GearSlot slot, Func<Gear, bool> selector)
     {
         return null; // TODO - Implement correctly
     }
@@ -148,7 +148,7 @@ public class Hero
     /// <summary>
     /// Selects the best-in-slot Gear object for the Hero, without restrictions.
     /// </summary>
-    public Gear BestGearInSlot(GearSlot slot)
+    public Gear? BestGearInSlot(GearSlot slot)
     {
         return BestGearInSlot(slot, g => true);
     }
@@ -156,7 +156,7 @@ public class Hero
     /// <summary>
     /// Selects the best-in-slot Gear object for the Hero, for the given Affinity.
     /// </summary>
-    public Gear BestGearInSlot(GearSlot slot, AffinityType affinity)
+    public Gear? BestGearInSlot(GearSlot slot, AffinityType affinity)
     {
         return BestGearInSlot(slot, g => g.Affinity == affinity);
     }
