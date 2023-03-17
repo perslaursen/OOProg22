@@ -1,49 +1,60 @@
-﻿////List<string> lines = new List<string> { "Hej", "Farvel", "Goddag" };
+﻿//ChainLinkInt linkC = new ChainLinkInt(12);
+//ChainLinkInt linkB = new ChainLinkInt(7, linkC);
+//ChainLinkInt linkA = new ChainLinkInt(29, linkB);
 
-////Character03 c03 = new NPC03("Bo", 50, 15, lines);
+//ChainLinkInt? link = linkA;
 
-////for     (int i = 0; i < 10; i++)
+//while (link != null)
+//{
+//    Console.WriteLine(link.Value);
+//    link = link.Next;
+//}
+
+//ChainLinkDouble linkC3 = new ChainLinkDouble(12);
+//ChainLinkDouble linkB2 = new ChainLinkDouble(7, linkC3);
+//ChainLinkDouble linkA1 = new ChainLinkDouble(29, linkB2);
+
+//ChainLinkDouble? link1 = linkA1;
+
+//while (link1 != null)
+//{
+//    Console.WriteLine(link1.Value);
+//    link1 = link1.Next;
+//}
+
+//ChainLink<int> linkedC = new ChainLink<int>(12);
+//ChainLink<int> linkedB = new ChainLink<int>(7, linkedC);
+//ChainLink<int> linkedA = new ChainLink<int>(29, linkedB);
+
+//ChainLink<int>? linked = linkedA;
+
+////while (linked != null)
 ////{
-////    Console.WriteLine(c03.DealDamage());
-////    Console.WriteLine(c03.Talk());
+////    Console.WriteLine(linked.Value);
+////    linked = linked.Next;
 ////}
 
-////c03 = new PassiveNPC03("Bent", 50, lines);
-
-////for (int i = 0; i < 10; i++)
-////{
-////    Console.WriteLine(c03.DealDamage());
-////    Console.WriteLine(c03.Talk());
-////}
-
-//List<string> lines = new List<string> { "Hej", "Farvel", "Goddag" };
-
-//ICharacter c04 = new NPC04("Bo", 50,15, lines);
-
-//for (int i = 0; i < 10; i++)
+//void PrintChainedCollection<T>(ChainLink<T> start)
 //{
-//    Console.WriteLine(c04.DealDamage());
-//    Console.WriteLine(c04.Talk());
+//    ChainLink<T>? linked = start;
+//    while (linked != null)
+//    {
+//        Console.WriteLine(linked.Value);
+//        linked = linked.Next;
+//    }
 //}
 
-//c04 = new PassiveNPC04("Bent", 50, lines);
+//PrintChainedCollection<int>(linked);
 
-//for (int i = 0; i < 10; i++)
-//{
-//    Console.WriteLine(c04.DealDamage());
-//    Console.WriteLine(c04.Talk());
-//}
+Person silas = new Person(3,"silas");
 
+Person josh = new Person(2,"josh");
 
-//List<string> lines = new List<string> { "Hej", "Farvel", "Goddag" };
+Item ball = new Item(1, "Ball");
 
-//ICharacter zombie1 = new Zombie();
+Item ball2 = new Item(2, "Football");
 
-//for (int i = 0; i < 10; i++)
-//{
-//    Console.WriteLine(zombie1.DealDamage());
-//    Console.WriteLine(zombie1.Talk());
-//}
-
-GameSetup gameSetup = new GameSetup();
-gameSetup.AllTalk();
+Console.WriteLine(silas);
+Console.WriteLine(josh);
+Console.WriteLine(ball);
+Console.WriteLine(ball2);
