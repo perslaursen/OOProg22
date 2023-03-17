@@ -12,3 +12,28 @@ drinks.Add(new Drink("Watered Down", "Whiskey", 3, "Water", 3));
 drinks.Add(new Drink("Caribbean Gold", "Rum", 6, "Fanta", 20));
 drinks.Add(new Drink("Siberian Zone", "Vodka", 6, "None", 0));
 #endregion
+
+var result = drinks.Select(d => d.Name);
+var result1 = drinks.Where(d => d.AlcoholicPart == "None").Select(d => d.Name);
+var result2 = drinks.Where(d => d.AlcoholicPart != "None")
+                    .Select(d => new { d.Name, d.AlcoholicPart, d.AlcoholicPartAmount });
+
+var result3 = drinks.OrderBy(d => d.Name).Select(d => d.Name);
+
+var result4 = drinks.Select(d => d.AlcoholicPartAmount)
+                    .Sum();
+
+var result5 = drinks.Where(d => d.AlcoholicPart != "None")
+                    .Select(d => d.AlcoholicPartAmount)
+                    .Average();
+
+var groupByAlc = drinks.GroupBy(d => d.AlcoholicPart)
+                        .GroupBy(d => d.Key,d => d.GroupBy(p => p.Name)
+    );
+
+Console.WriteLine(groupByAlc);
+
+foreach (var item in result3)
+{
+    Console.WriteLine(item);
+}

@@ -48,4 +48,23 @@ c4.AddIngredient("Mineral Water", 10);
 c4.AddIngredient("Lime Juice", 2);
 
 List<Cocktail> cocktails = new List<Cocktail> { c1, c2, c3, c4 };
+
+var query = from cocktail in cocktails
+            select new {cocktail.Name, cocktail.Ingredients};
+
+foreach (var item in query)
+{
+    Console.WriteLine($"DrinK: {item.Name} ");
+    
+    foreach (var item2 in item.Ingredients)
+    {
+        Console.WriteLine(item2);
+    }
+}
+
+
+var innerJoin = from c in cocktails // outer sequence
+                join i in ingredients //inner sequence 
+                on c.Ingredients equals i.Name // key selector 
+                select new { c.Name };
 #endregion

@@ -43,19 +43,9 @@ public class StudentRepository
             }
             else
             {
-                double sum = 0;
-                int countRealScores = 0;
+                return (from student in _students.Values
+                        select student.ScoreAverage).Average();
 
-                foreach (var student in _students.Values)
-                {
-                    if (student.ScoreAverage >= 0)
-                    {
-                        sum = sum + student.ScoreAverage;
-                        countRealScores++;
-                    }
-                }
-
-                return (sum / countRealScores);
             }
         }
     }

@@ -40,4 +40,6 @@ Console.WriteLine($"Average for {students.GetStudent(92)}: {students.GetAverageF
 Console.WriteLine($"Average for {students.GetStudent(120)}: {students.GetAverageForStudent(120):F}");
 Console.WriteLine($"Average for {students.GetStudent(602)}: {students.GetAverageForStudent(602):F}");
 Console.WriteLine($"Average for all students: {students.TotalAverage:F}");
+
+
 #endregion
