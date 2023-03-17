@@ -21,6 +21,8 @@ public class Character
     /// </summary>
     public bool IsDead { get { return LifePoints <= 0; } }
 
+    
+    
     public Character(string name, int lifePoints, int damageLimit)
     {
         Name = name;

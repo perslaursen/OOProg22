@@ -15,12 +15,17 @@ public class GameSetup
     {
         _characters = new List<ICharacter>();
 
-        // Add some character objects of different types here.
+        _characters.Add(new NPC04("Player", 100, 10, _lines));
+        _characters.Add(new PassiveNPC04("Player", 100, _lines));
+        _characters.Add(new Zombie());
     }
 
     public void AllTalk()
     {
-        // Use a foreacah loop to let all characters Talk
+        foreach (var item in _characters)
+        {
+            Console.WriteLine(item.Talk());
+        }
     }
 }
 
