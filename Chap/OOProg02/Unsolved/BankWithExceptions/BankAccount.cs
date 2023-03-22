@@ -6,6 +6,10 @@ public class BankAccount
 
     public BankAccount(double interestRate)
     {
+        if (interestRate < 0 || interestRate > 0.2)
+        {
+            throw new IllegalInterestRateException($"Wrong interestrate");
+        }
         _interestRate = interestRate;
         _balance = 0.0;
     }
@@ -28,6 +32,10 @@ public class BankAccount
 
     public void Deposit(double amount)
     {
+        if (amount < 0)
+        {
+            throw new NegativeAmountException($"Amount was {amount} kr. the amount cant be negative");
+        }
         _balance = _balance + amount;
     }
 

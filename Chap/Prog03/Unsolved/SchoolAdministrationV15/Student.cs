@@ -36,14 +36,9 @@ public class Student
             }
             else
             {
-                double sum = 0;
-
-                foreach (var kvp in _testScores)
-                {
-                    sum = sum + kvp.Value;
-                }
-
-                return (sum / _testScores.Count);
+                return (from t in _testScores 
+                        select t.Value).Average();
+                
             }
         }
     }
