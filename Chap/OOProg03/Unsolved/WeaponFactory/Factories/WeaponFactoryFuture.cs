@@ -6,7 +6,20 @@ public class WeaponFactoryFuture : IWeaponFactory
 {
     public IWeapon Create(WeaponType type)
     {
-        // You can do better than that...
+        // implement
+        if (WeaponType.Magic == type)
+        {
+            return new Wand();
+        }
+        else if (WeaponType.Melee == type)
+        {
+            return new Dagger();
+        }
+        else if (WeaponType.Ranged == type)
+        {
+            return new CrossBow();
+        }
+        
         return null;
     }
 }

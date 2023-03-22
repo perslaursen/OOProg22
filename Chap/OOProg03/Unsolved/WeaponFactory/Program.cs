@@ -2,12 +2,12 @@
 
 Console.WriteLine("Testing Medieval Weapon Factory");
 // Uncomment the below line to run a test of WeaponFactoryMedieval
-// TestWeaponFactory(new WeaponFactoryMedieval());
+TestWeaponFactory(new WeaponFactoryMedieval());
 Console.WriteLine();
 
 Console.WriteLine("Testing Future Weapon Factory");
 // Uncomment the below line to run a test of WeaponFactoryFuture
-// TestWeaponFactory(new WeaponFactoryFuture());
+TestWeaponFactory(new WeaponFactoryFuture());
 Console.WriteLine();
 
 void TestWeaponFactory(IWeaponFactory factory)
