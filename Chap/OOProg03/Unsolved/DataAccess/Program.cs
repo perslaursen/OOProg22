@@ -5,13 +5,13 @@ TestDBToolCustomer(new DBTool<Customer>());
 Console.WriteLine();
 Console.WriteLine();
 
-// UNCOMMENT THE BELOW LINES TO TEST DBToolAdapter
-//Console.WriteLine("-------------- DBToolAdapter Test (Customer) -------------");
-//TestDataSourceCustomer(new DBToolAdapter<Customer>());
-//Console.WriteLine();
-//Console.WriteLine();
+//UNCOMMENT THE BELOW LINES TO TEST DBToolAdapter
+Console.WriteLine("-------------- DBToolAdapter Test (Customer) -------------");
+TestDataSourceCustomer(new DBToolAdapter<Customer>());
+Console.WriteLine();
+Console.WriteLine();
 
-// UNCOMMENT THE BELOW LINES TO TEST DataSourceAdapter
+//UNCOMMENT THE BELOW LINES TO TEST DataSourceAdapter
 //Console.WriteLine("-------------- DataSourceAdapter Test (Car) --------------");
 //TestDataSourceCar(new DataSourceAdapter<Car>());
 //Console.WriteLine();

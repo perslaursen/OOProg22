@@ -1,4 +1,5 @@
 ﻿
+using System.Security.Cryptography;
 /// <summary>
 /// This class implements an adapter for the DBTool. That is, the class
 /// 1) Implements the IDataSource interface (with TKey = int).
@@ -10,6 +11,7 @@ public class DBToolAdapter<T> : IDataSource<int, T> where T : class, IHasKey
 {
     #region Instance fields
     private DBTool<T> _dbTool;
+    
     #endregion
 
     #region Constructor
@@ -23,13 +25,27 @@ public class DBToolAdapter<T> : IDataSource<int, T> where T : class, IHasKey
     public int Count
     {
         // Implement this property by using _dbTool
-        get { return 0; }
+        
+        get { return _dbTool.NoOfRecords(); }
     }
 
     public Dictionary<int, T> All
     {
         // Implement this property by using _dbTool
-        get { return new Dictionary<int, T>(); }
+        get 
+        { 
+            List<int> keys = _dbTool.GetAllKeys();
+
+            Dictionary<int, T> myDictonaty = new Dictionary<int, T>();
+
+            foreach (var key in keys)
+            {
+                T obj = _dbTool.GetRecord(key);
+                myDictonaty.Add(key, obj);
+            }
+            return myDictonaty;
+
+        }
     }
     #endregion
 
@@ -37,32 +53,40 @@ public class DBToolAdapter<T> : IDataSource<int, T> where T : class, IHasKey
     public void Create(int key, T data)
     {
         // Implement this method by using _dbTool
+        data.Key = key;
+        _dbTool.InsertRecord(data);
     }
 
     public T Read(int key)
     {
         // Implement this method by using _dbTool
-        return default(T);
+        return _dbTool.GetRecord(key);
+        
     }
 
     public void Update(int key, T data)
     {
         // Implement this method by using _dbTool
+        T oldData = Read(key);
+        _dbTool.UpdateRecord(oldData,data);
     }
 
     public void Delete(int key)
     {
         // Implement this method by using _dbTool
+        _dbTool.RemoveRecord(key);
     }
 
     public void Load()
     {
         // Implement this method by using _dbTool
+        _dbTool.ReadFromDB();
     }
 
     public void Save()
     {
         // Implement this method by using _dbTool
+        _dbTool.WriteToDB();
     }
     #endregion
 }
