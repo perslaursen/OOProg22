@@ -3,6 +3,7 @@ public class DrinkDataService : IDataService<Drink>
 {
     private IRepository<Ingredient> _ingRepo;
     private IRepository<DrinkDesolved> _ddRepo;
+
     public DrinkDataService(
         IRepository<Ingredient> ingRepo,
         IRepository<DrinkDesolved> ddRepo)
@@ -11,7 +12,7 @@ public class DrinkDataService : IDataService<Drink>
         _ddRepo = ddRepo;
     }
 
-    #region Implementation of IService interface
+    #region Implementation of IDataService interface
 
     public int Create(Drink drink)
     {

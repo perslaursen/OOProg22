@@ -7,11 +7,11 @@ using System.Runtime.CompilerServices;
 /// in the database defined by the connection string. The class is NOT complete, and there is 
 /// definitely room for improvement w.r.t. structure and parameterization.
 /// </summary>
-public class DBMethods
+public class DBMethodsForDrink
 {
     private string _connectionString;
 
-    public DBMethods(string connectionString)
+    public DBMethodsForDrink(string connectionString)
     {
         _connectionString = connectionString;
     }

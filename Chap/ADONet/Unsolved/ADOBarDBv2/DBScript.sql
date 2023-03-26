@@ -1,6 +1,4 @@
-﻿USE [DrinkDB]
-GO
-
+﻿
 CREATE TABLE [dbo].[Drink] (
     [Id]                     INT           NOT NULL,
     [Name]                   NVARCHAR (50) NOT NULL,

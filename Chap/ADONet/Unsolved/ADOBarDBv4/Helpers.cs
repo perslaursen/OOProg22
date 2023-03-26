@@ -7,6 +7,7 @@ public class Helpers
     public static void PrintList<T>(List<T> list, string? header = null)
     {
         Console.WriteLine(header ?? $"All {typeof(T).Name} ({list.Count} objects in total)");
+        Console.WriteLine("------------------------------------------------------");
         foreach (T t in list)
         {
             Console.WriteLine(t);

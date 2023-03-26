@@ -7,7 +7,7 @@ builder.InitialCatalog = "DrinkDB";
 
 
 // 2) Read all drinks from the DB, and print them (should print 10 drinks)
-DBMethods dbMethods = new DBMethods(builder.ConnectionString);
+DBMethodsForDrink dbMethods = new DBMethodsForDrink(builder.ConnectionString);
 List<Drink> drinks = dbMethods.ReadAllFromDB();
 Helpers.PrintDrinkList(drinks);
 
