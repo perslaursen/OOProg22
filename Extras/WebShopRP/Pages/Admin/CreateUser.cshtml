@@ -1,0 +1,21 @@
+﻿@page
+@model WebShopRP.Pages.Admin.CreateUserModel
+@{
+}
+
+<h1 class="display-5 mb-3">Create New User</h1>
+
+<form method="post">
+	<div class="form-group mb-3">
+		<label asp-for="@Model.Data.UserName" class="control-lable"></label>
+		<input asp-for="@Model.Data.UserName" class="form-control" />
+	</div>
+	<div class="form-group mb-3">
+		<label asp-for="@Model.Data.Password" class="control-lable"></label>
+		<input asp-for="@Model.Data.Password" class="form-control" />
+	</div>
+
+	<div class="form-group mb-3">
+		<input type="submit" value="Create" class="btn btn-outline-primary" />
+	</div>
+</form>
