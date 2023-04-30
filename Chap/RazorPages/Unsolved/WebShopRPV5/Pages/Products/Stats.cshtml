@@ -1,0 +1,68 @@
+﻿@page
+@model WebShopRP.Pages.Products.StatsModel
+@{
+}
+
+<h1 class="display-3 mb-5">Product Statistics</h1>
+
+<table class="table table-bordered table-striped">
+	<colgroup>
+		<col style="width : 25%">
+		<col style="width : 25%">
+		<col style="width : 25%">
+		<col style="width : 25%">
+	</colgroup>
+	<thead>
+		<tr class="table-dark">
+			<th>
+				Id (Name)
+			</th>
+			<th>
+				# Orders
+			</th>
+			<th>
+				# Ordered
+			</th>
+			<th>
+				Total Cost
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Statistics != null)
+		{
+			foreach (var stat in Model.Statistics.Stats.Values)
+			{
+				<tr>
+					<td>
+						# @stat.Id (@stat.Name)
+					</td>
+					<td>
+						@stat.TotalOrders
+					</td>
+					<td>
+						@stat.TotalOrdered
+					</td>
+					<td>
+						@stat.TotalPrice kr.
+					</td>
+				</tr>
+			}
+
+			<tr class="table-success">
+				<td>
+					TOTAL
+				</td>
+				<td>
+					@Model.Statistics.TotalOrders
+				</td>
+				<td>
+					@Model.Statistics.TotalOrdered
+				</td>
+				<td>
+					@Model.Statistics.TotalPrice kr.
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

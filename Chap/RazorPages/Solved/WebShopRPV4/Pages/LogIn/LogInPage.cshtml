@@ -1,0 +1,26 @@
+﻿@page
+@model WebShopRP.Pages.LogIn.LogInPageModel
+@{
+}
+
+<h1 class="display-5 mb-3">Log in</h1>
+
+<div class="container">
+	<div>
+		@Model.Message
+	</div>
+	<form method="post">
+		<div class="form-group mb-3">
+			<label asp-for="UserName" class="control-label "></label>
+			<input asp-for="UserName" class="form-control" />
+		</div>
+		<div class="form-group mb-3">
+			<label asp-for="Password" class="control-label"></label>
+			<input asp-for="Password" class="form-control" />
+		</div>
+
+		<div class="form-group mb-3">
+			<input type="submit" value="Log in" class="btn btn-outline-primary" />
+		</div>
+	</form>
+</div>

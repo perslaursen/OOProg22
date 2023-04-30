@@ -1,0 +1,28 @@
+﻿@page
+@model WebShopRP.Pages.Products.ViewModel
+@{
+}
+
+<h1 class="display-3 mb-5">View Product</h1>
+
+<form method="get">
+	<div class="form-group mb-3" hidden>
+		<label asp-for="@Model.Data.Id" class="control-label"></label>
+		<input asp-for="@Model.Data.Id" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group mb-3">
+		<label asp-for="@Model.Data.Name" class="control-label"></label>
+		<input asp-for="@Model.Data.Name" class="form-control" readonly="@(true)" />
+	</div>
+	<div class="form-group mb-3">
+		<label asp-for="@Model.Data.Price" class="control-label"></label>
+		<input asp-for="@Model.Data.Price" class="form-control" readonly="@(true)" />
+	</div>
+	<div class ="mb-3">
+		<p>Part of @Model.Data.Orders.Count() orders</p>
+	</div>
+
+	<p>
+		<a class="btn btn-outline-primary mt-3" asp-page="All">Back to list</a>
+	</p>
+</form>

@@ -1,0 +1,35 @@
+﻿@page
+@model WebShopRP.Pages.Orders.AllModel
+@{
+}
+
+<h1 class="display-3 mb-5">Orders</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach (var order in Model.Data)
+        {
+            <div class="col-md-4 p-3">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title"># @order.Id</h3>
+                        <h4>@(order.Customer.Name)</h4>
+                        <h5>@(order.Product.Name) (@(order.Amount) stk.)</h5>
+                        <div class="d-flex justify-content-between">
+                            <h5>@(order.TotalPrice) kr.</h5>
+                            <div>
+                                <a class="btn btn-outline-secondary btn-sm" type="button" title="View" asp-page="View" asp-route-id="@order.Id"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-outline-primary btn-sm" type="button" title="Edit" asp-page="Edit" asp-route-id="@order.Id"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-outline-danger btn-sm" type="button" title="Delete" asp-page="Delete" asp-route-id="@order.Id"><i class="fa fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<p>
+    <a class="btn btn-outline-primary mt-3" asp-page="Create"> Create a new Order </a>
+</p>

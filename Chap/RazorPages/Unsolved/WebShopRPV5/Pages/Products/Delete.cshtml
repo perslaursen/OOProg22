@@ -1,0 +1,14 @@
+﻿@page
+@model WebShopRP.Pages.Products.DeleteModel
+@{
+}
+
+<h1 class="display-3 mb-5">Confirm Deletion of Product</h1>
+
+<div class="alert alert-danger">
+	<h5>Are you sure you want to delete @Model.Data.Name (Product)</h5>
+	<form method="post">
+		<button type="submit" class="btn btn-outline-danger mt-3">Yes</button>
+		<a class="btn btn-outline-primary mt-3" asp-page="/Products/All">No</a>
+	</form>
+</div>

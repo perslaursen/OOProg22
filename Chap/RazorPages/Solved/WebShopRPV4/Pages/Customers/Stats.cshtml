@@ -1,0 +1,96 @@
+﻿@page
+@model WebShopRP.Pages.Customers.StatsModel
+@{
+}
+
+<h1 class="display-3 mb-5">Customer Statistics</h1>
+
+<table class="table table-bordered table-striped">
+	<colgroup>
+		<col style="width : 14%">
+		@if (Model.Statistics != null)
+		{
+			foreach (var product in Model.Products)
+			{
+				<col style="width : auto"/>
+			}
+		}
+		<col style="width : 8%">
+		<col style="width : 8%">
+		<col style="width : 10%">
+	</colgroup>
+	<thead>
+		<tr class="table-dark">
+			<th>
+				Id (Name)
+			</th>
+			@if (Model.Statistics != null)
+			{
+				foreach (var product in Model.Products)
+				{
+					<th>
+						@product.Name
+					</th>
+				}
+			}
+			<th>
+				# Orders
+			</th>
+			<th>
+				# Ordered
+			</th>
+			<th>
+				Total Cost
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Statistics != null)
+		{
+			@foreach (var stat in Model.Statistics.Stats.Values)
+			{
+				<tr>
+					<td>
+						@stat.Name
+					</td>
+					@foreach (var product in Model.Products)
+					{
+						<td>
+							@stat.AmountCountByProductId(product.Id)
+						</td>
+					}
+					<td>
+						@stat.TotalOrders
+					</td>
+					<td>
+						@stat.TotalOrdered
+					</td>
+					<td>
+						@stat.TotalPrice kr.
+					</td>
+				</tr>
+			}
+
+			<tr class="table-success">
+				<td>
+					TOTAL
+				</td>
+				@foreach (var product in Model.Products)
+				{
+					<td>
+						@Model.Statistics.AmountCountByProductId(product.Id)
+					</td>
+				}
+				<td>
+					@Model.Statistics.TotalOrders
+				</td>
+				<td>
+					@Model.Statistics.TotalOrdered
+				</td>
+				<td>
+					@Model.Statistics.TotalPrice kr.
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
