@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 /// Base class for "All" page model classes.
 /// </summary>
 /// <typeparam name="T">Type of entities being shown</typeparam>
-public class GetAllPageModel<T> : PageModel where T : class, IHasId, IUpdateFromOther<T>
+public class GetAllPageModel<T> : PageModel
+    where T : class, IHasId, IUpdateFromOther<T>, new()
 {
     private IDataService<T> _dataService;
 

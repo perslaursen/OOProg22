@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 /// A page model will "manipulate" (i.e. access and/or create) a data entity of type TData.
 /// </summary>
 /// <typeparam name="TData">Type of data being manipulated by the page</typeparam>
-public class PageModelAppBase<TData> : PageModel where TData : class, IHasId, IUpdateFromOther<TData>
+public class PageModelAppBase<TData> : PageModel
+    where TData : class, IHasId, IUpdateFromOther<TData>, new()
 {
     public const string DefaultRedirectPage = "All";
     public const string DefaultErrorPage = "/Error";
@@ -28,7 +29,7 @@ public class PageModelAppBase<TData> : PageModel where TData : class, IHasId, IU
     /// Data entity to be manipulated by the page model.
     /// </summary>
     [BindProperty]
-    public TData Data { get; set; }
+    public TData Data { get; set; } = new TData();
 
     public PageModelAppBase(IDataService<TData> dataService, string onPostRedirectPage = DefaultRedirectPage)
     {

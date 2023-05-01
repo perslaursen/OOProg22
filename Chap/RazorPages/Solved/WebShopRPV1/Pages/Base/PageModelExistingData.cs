@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 /// This is typically Edit, Delete and View pages.
 /// </summary>
 /// <typeparam name="T">Type of data being manipulated by the page</typeparam>
-public class PageModelExistingData<T> : PageModelAppBase<T> where T : class, IHasId, IUpdateFromOther<T>
+public class PageModelExistingData<T> : PageModelAppBase<T>
+    where T : class, IHasId, IUpdateFromOther<T>, new()
 {
 	public PageModelExistingData(IDataService<T> dataService, string onPostRedirectPage = DefaultRedirectPage) 
 		: base(dataService, onPostRedirectPage)

@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 /// Base class for "Create" page model classes.
 /// </summary>
 /// <typeparam name="T">Type of entity being created</typeparam>
-public class CreatePageModel<T> : PageModelAppBase<T> where T : class, IHasId, IUpdateFromOther<T>
+public class CreatePageModel<T> : PageModelAppBase<T>
+    where T : class, IHasId, IUpdateFromOther<T>, new()
 {
     public CreatePageModel(IDataService<T> dataService, string onPostRedirectPage = DefaultRedirectPage)
         : base(dataService, onPostRedirectPage)

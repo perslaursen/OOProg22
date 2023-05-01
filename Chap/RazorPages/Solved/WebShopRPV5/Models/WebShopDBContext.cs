@@ -14,7 +14,7 @@ public partial class WebShopDBContext : DbContext
     {
     }
 
-    public virtual DbSet<Order> Customers { get; set; }
+    public virtual DbSet<Customer> Customers { get; set; }
 
     public virtual DbSet<Order> Orders { get; set; }
 

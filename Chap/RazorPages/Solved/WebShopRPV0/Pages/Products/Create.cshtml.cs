@@ -9,7 +9,7 @@ namespace WebShopV0.Pages.Products
         private IProductDataService _productDataService;
 
         [BindProperty]
-        public Product Data { get; set; }
+        public Product Data { get; set; } = new Product();
 
         public CreateModel(IProductDataService productDataService)
         {
