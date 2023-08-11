@@ -44,7 +44,7 @@ public partial class EFCDrinkDBContext : DbContext
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-    public Ingredient? GetIngredientByName(string name)
+    public Ingredient GetIngredientByName(string name)
     {
         return Ingredients.FirstOrDefault(i => i.Name == name);
     }
