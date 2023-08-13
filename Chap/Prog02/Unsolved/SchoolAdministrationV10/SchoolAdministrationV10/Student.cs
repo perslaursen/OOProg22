@@ -6,42 +6,33 @@
 public class Student
 {
     #region Instance fields
-    private int _id;
-    private string _name;
     private Dictionary<string, int> _testScores;
     #endregion
 
     #region Constructor
     public Student(int id, String name)
     {
-        _id = id;
-        _name = name;
+        ID = id;
+        Name = name;
         _testScores = new Dictionary<string, int>();
     }
     #endregion
 
     #region Properties
-    public int ID
-    {
-        get { return _id; }
-    }
-
-    public string Name
-    {
-        get { return _name; }
-    }
+    public int ID { get ; }
+    public string Name { get; }
 
     /// <summary>
     /// Returns the average of the test scores for the student.
     /// If no scores are present, an average of -1 is returned.
     /// </summary>
-    public int ScoreAverage
+    public int? ScoreAverage
     {
         get
         {
             if (_testScores.Count == 0)
             {
-                return -1;
+                return null;
             }
 
             int sum = 0;

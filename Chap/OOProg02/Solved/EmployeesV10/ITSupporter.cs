@@ -5,18 +5,12 @@
 /// </summary>
 public class ITSupporter : Employee
 {
-    private string _primaryWorkArea;
+    public string PrimaryWorkArea { get; set; }
 
     public ITSupporter(string name, int hoursPerWeek, string primaryWorkArea)
         : base(name, hoursPerWeek)
     {
-        _primaryWorkArea = primaryWorkArea;
-    }
-
-    public string PrimaryWorkArea
-    {
-        get { return _primaryWorkArea; }
-        set { _primaryWorkArea = value; }
+        PrimaryWorkArea = primaryWorkArea;
     }
 
     public string AllInformation

@@ -34,27 +34,21 @@ namespace UnitTestProject
         [TestMethod]
         public void TestWarrior_Constructor_NameIsMinimal_NoException()
         {
-            // Arrange
-            Warrior unexpectedResult = null;
-
             // Act
             Warrior actualResult = new Warrior("Bo", 100);
 
-            // Arrange, Act & Assert
-            Assert.AreNotEqual(unexpectedResult, actualResult);
+            // Assert
+            Assert.IsNotNull(actualResult);
         }
 
         [TestMethod]
         public void TestWarrior_Constructor_NameIsOK_NoException()
         {
-            // Arrange
-            Warrior unexpectedResult = null;
-
             // Act
             Warrior actualResult = new Warrior("Rolf", 100);
 
-            // Arrange, Act & Assert
-            Assert.AreNotEqual(unexpectedResult, actualResult);
+            // Assert
+            Assert.IsNotNull(actualResult);
         }
 
         [TestMethod]
@@ -74,27 +68,21 @@ namespace UnitTestProject
         [TestMethod]
         public void TestWarrior_Constructor_HitPointsMinimal_NoException()
         {
-            // Arrange
-            Warrior unexpectedResult = null;
-
             // Act
             Warrior actualResult = new Warrior("Rolf", 1);
 
-            // Arrange, Act & Assert
-            Assert.AreNotEqual(unexpectedResult, actualResult);
+            // Assert
+            Assert.IsNotNull(actualResult);
         }
 
         [TestMethod]
         public void TestWarrior_Constructor_HitPointsPositive_NoException()
         {
-            // Arrange
-            Warrior unexpectedResult = null;
-
             // Act
             Warrior actualResult = new Warrior("Rolf", 100);
 
-            // Arrange, Act & Assert
-            Assert.AreNotEqual(unexpectedResult, actualResult);
+            // Assert
+            Assert.IsNotNull(actualResult);
         }
 
         [TestMethod]
@@ -107,7 +95,7 @@ namespace UnitTestProject
             // Act
             string actualResult = testSubject.Name;
 
-            // Arrange, Act & Assert
+            // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
 
@@ -122,7 +110,7 @@ namespace UnitTestProject
             string actualResult = testSubject.Name;
             actualResult = testSubject.Name;
 
-            // Arrange, Act & Assert
+            // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
 
@@ -136,7 +124,7 @@ namespace UnitTestProject
             // Act
             int actualResult = testSubject.HitPoints;
 
-            // Arrange, Act & Assert
+            // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
 
@@ -151,7 +139,7 @@ namespace UnitTestProject
             int actualResult = testSubject.HitPoints;
             actualResult = testSubject.HitPoints;
 
-            // Arrange, Act & Assert
+            // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
 
@@ -161,7 +149,7 @@ namespace UnitTestProject
             // Arrange
             Warrior testSubject = new Warrior("Rolf", 100);
 
-            // Arrange, Act & Assert
+            // Act & Assert
             Assert.ThrowsException<ArgumentException>(() => { testSubject.ReceiveDamage(-1); });
         }
 

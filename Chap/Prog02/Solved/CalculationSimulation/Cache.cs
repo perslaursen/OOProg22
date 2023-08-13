@@ -5,20 +5,20 @@
 public class Cache
 {
     #region Instance fields
-    private int[,] cacheValues;
+    private int?[,] cacheValues;
     #endregion
 
     #region Constructor
     public Cache(int xDimension, int yDimension)
     {
         // Create a cache of results with the specified dimensions
-        cacheValues = new int[xDimension, yDimension];
+        cacheValues = new int?[xDimension, yDimension];
 
         for (int x = 0; x < xDimension; x++)
         {
             for (int y = 0; y < yDimension; y++)
             {
-                cacheValues[x, y] = Constants.CalculationNoValue;
+                cacheValues[x, y] = null;
             }
         }
     }
@@ -28,7 +28,7 @@ public class Cache
     /// <summary>
     /// Look up the value stored in cell [x,y]
     /// </summary>
-    public int Lookup(int x, int y)
+    public int? Lookup(int x, int y)
     {
         return cacheValues[x, y];
     }

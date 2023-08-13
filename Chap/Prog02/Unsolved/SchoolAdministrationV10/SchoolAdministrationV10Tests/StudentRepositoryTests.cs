@@ -5,7 +5,7 @@ namespace Tests
     [TestClass()]
     public class StudentRepositoryTests
     {
-        private StudentRepository _students;
+        private StudentRepository _students = new StudentRepository();
 
         public void TestSetup()
         {
@@ -20,16 +20,19 @@ namespace Tests
             anna.AddTestResult("Math", 70);
             anna.AddTestResult("Biology", 90);
             anna.AddTestResult("French", 52);
+            // Average for Anna is 74
 
             betty.AddTestResult("English", 77);
             betty.AddTestResult("Math", 82);
             betty.AddTestResult("Chemistry", 65);
             betty.AddTestResult("French", 41);
+            // Average for Betty is 66
 
             carl.AddTestResult("English", 55);
             carl.AddTestResult("Math", 48);
             carl.AddTestResult("Biology", 70);
             carl.AddTestResult("French", 38);
+            // Average for Betty is 52
 
             _students.AddStudent(anna);
             _students.AddStudent(betty);
@@ -60,11 +63,11 @@ namespace Tests
             TestSetup();
 
             // Act
-            Student result = _students.GetStudent(338);
+            Student? result = _students.GetStudent(338);
 
             // Assert
             Assert.AreNotEqual(null, result);
-            Assert.AreEqual(result.ID, 338);
+            Assert.AreEqual(result?.ID, 338);
         }
 
         [TestMethod()]
@@ -74,7 +77,7 @@ namespace Tests
             TestSetup();
 
             // Act
-            Student result = _students.GetStudent(833);
+            Student? result = _students.GetStudent(833);
 
             // Assert
             Assert.AreEqual(null, result);
@@ -87,8 +90,8 @@ namespace Tests
             TestSetup();
 
             // Act
-            int result = _students.GetAverageForStudent(12);
-            int expectedResult = (85 + 70 + 90 + 52) / 4;
+            int? result = _students.GetAverageForStudent(12);
+            int? expectedResult = (85 + 70 + 90 + 52) / 4;
 
             // Assert
             Assert.AreEqual(expectedResult, result);
@@ -101,8 +104,8 @@ namespace Tests
             TestSetup();
 
             // Act
-            int result = _students.GetAverageForStudent(21);
-            int expectedResult = -1;
+            int? result = _students.GetAverageForStudent(21);
+            int? expectedResult = null;
 
             // Assert
             Assert.AreEqual(expectedResult, result);
@@ -115,10 +118,8 @@ namespace Tests
             TestSetup();
 
             // Act
-            int result = _students.GetTotalAverage();
-            int expectedResult = (_students.GetAverageForStudent(12) +
-                                  _students.GetAverageForStudent(338) +
-                                  _students.GetAverageForStudent(92)) / 3;
+            int? result = _students.GetTotalAverage();
+            int expectedResult = (74 + 66 + 52) / 3;
 
             // Assert
             Assert.AreEqual(expectedResult, result);

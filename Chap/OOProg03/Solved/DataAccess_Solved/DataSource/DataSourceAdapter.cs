@@ -39,8 +39,11 @@ public class DataSourceAdapter<T> : IDataSource<int, T> where T : class
                 // (these objects MUST implement IHasKey):
                 // 1) "Unwrap" the original domain object (through the Data property)
                 // 2) Add the unwrapped domain object and corresponding key to the result.
-                T obj = Unwrap(keyAndObj.Value);
-                result.Add(keyAndObj.Key, obj);
+                T? obj = Unwrap(keyAndObj.Value);
+                if (obj != null)
+                {
+                    result.Add(keyAndObj.Key, obj);
+                }
             }
 
             return result;
@@ -56,7 +59,7 @@ public class DataSourceAdapter<T> : IDataSource<int, T> where T : class
         _dbToolAdapter.Create(key, Wrap(data, key));
     }
 
-    public T Read(int key)
+    public T? Read(int key)
     {
         // Unwrap the domain object from the returned KeyAdapter object,
         // and return it to the caller (or return null if no object was found).
@@ -90,7 +93,7 @@ public class DataSourceAdapter<T> : IDataSource<int, T> where T : class
     #endregion
 
     #region Private methods for Wrap/Unwrap
-    private T Unwrap(KeyAdapter<T> wrappedObj)
+    private T? Unwrap(KeyAdapter<T>? wrappedObj)
     {
         return wrappedObj?.Data;
     }

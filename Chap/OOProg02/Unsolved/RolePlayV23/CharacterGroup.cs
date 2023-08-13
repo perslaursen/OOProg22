@@ -6,22 +6,18 @@ public class CharacterGroup
 {
     #region Instance fields
     private List<Character> _group;
-    private string _groupName;
     #endregion
 
     #region Constructor
     public CharacterGroup(string groupName)
     {
+        GroupName = groupName;
         _group = new List<Character>();
-        _groupName = groupName;
     }
     #endregion
 
     #region Properties
-    public string GroupName
-    {
-        get { return _groupName; }
-    }
+    public string GroupName { get; }
 
     /// <summary>
     /// Dead is defined as: All members of the group must be dead

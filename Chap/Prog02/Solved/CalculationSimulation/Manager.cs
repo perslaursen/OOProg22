@@ -17,7 +17,7 @@ public class Manager
         {
             int x = theGenerator.Next(0, xDimension);
             int y = theGenerator.Next(0, yDimension);
-            int value = theSimulator.Calculate(x, y);
+            int? value = theSimulator.Calculate(x, y);
             Console.WriteLine("Iteration {0:000} :   ({1},{2}) => {3}", iteration, x, y, value);
         }
     }

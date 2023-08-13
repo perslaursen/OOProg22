@@ -22,7 +22,7 @@ public class Calculator : ICalculate
     public int Calculate(Coordinate c)
     {
         // Pause between 300ms and 700ms, to simulate a complex calculation
-        System.Threading.Thread.Sleep(_generator.Next(300, 700));
+        Thread.Sleep(_generator.Next(300, 700));
 
         // Result is a deterministic function of x and y, i.e. the
         // result is always the same, given a speficic (x,y) pair.

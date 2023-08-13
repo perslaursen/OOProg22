@@ -5,49 +5,32 @@
 /// </summary>
 public class Weapon
 {
-    #region Instance fields
-    private string _description;
-    private int _minDamage;
-    private int _maxDamage;
-    #endregion
-
-    #region Constructor
-    public Weapon(string description, int minDamage, int maxDamage)
-    {
-        _description = description;
-        _minDamage = minDamage;
-        _maxDamage = maxDamage;
-    }
-    #endregion
-
     #region Properties
     /// <summary>
     /// Returns the description of the weapon.
     /// Cannot be changed after construction.
     /// </summary>
-    public string Description
-    {
-        get { return _description; }
-    }
+    public string Description { get; }
 
     /// <summary>
     /// Returns the minimum damage dealt by the weapon.
     /// Derived classes can read and change this value.
     /// </summary>
-    protected int MinDamage
-    {
-        get { return _minDamage; }
-        set { _minDamage = value; }
-    }
+    protected int MinDamage { get; set; }
 
     /// <summary>
     /// Returns the maximum damage dealt by the weapon.
     /// Derived classes can read and change this value.
     /// </summary>
-    protected int MaxDamage
+    protected int MaxDamage { get; set; }
+    #endregion
+
+    #region Constructor
+    public Weapon(string description, int minDamage, int maxDamage)
     {
-        get { return _maxDamage; }
-        set { _maxDamage = value; }
+        Description = description;
+        MinDamage = minDamage;
+        MaxDamage = maxDamage;
     }
     #endregion
 

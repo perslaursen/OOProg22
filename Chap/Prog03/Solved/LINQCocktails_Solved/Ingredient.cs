@@ -1,5 +1,4 @@
 ﻿
-using System.Xml.Linq;
 /// <summary>
 /// This class represents a cocktail ingredient,
 /// limited to liquid ingredients.

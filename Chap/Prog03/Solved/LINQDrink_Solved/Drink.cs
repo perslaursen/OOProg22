@@ -28,6 +28,4 @@ public class Drink
         NonAlcoholicPartAmount = nonAlcoholicPartAmount;
     }
     #endregion
-
-
 }

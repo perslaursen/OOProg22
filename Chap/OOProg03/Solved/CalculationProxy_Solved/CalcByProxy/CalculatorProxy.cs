@@ -30,11 +30,11 @@ public class CalculatorProxy : ICalculate
     /// </summary>
     public int Calculate(Coordinate c)
     {
-        int cachedValue = _cache.Lookup(c);
+        int? cachedValue = _cache.Lookup(c);
 
-        if (cachedValue != Cache.NoValue)
+        if (cachedValue != null)
         {
-            return cachedValue;
+            return cachedValue.Value;
         }
         else
         {

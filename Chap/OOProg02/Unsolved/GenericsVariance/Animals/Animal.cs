@@ -1,16 +1,11 @@
 ﻿
 public abstract class Animal
 {
-    private string name;
+    public string Name { get; }
 
     protected Animal(string name)
     {
-        this.name = name;
-    }
-
-    public string Name
-    {
-        get { return name; }
+        Name = name;
     }
 
     public abstract string Sound();

@@ -5,18 +5,12 @@
 /// </summary>
 public class Teacher : Employee
 {
-    private int _payGrade;
+    public int PayGrade { get; set; }
 
     public Teacher(string name, int hoursPerWeek, int payGrade)
         : base(name, hoursPerWeek)
     {
-        _payGrade = payGrade;
-    }
-
-    public int PayGrade
-    {
-        get { return _payGrade; }
-        set { _payGrade = value; }
+        PayGrade = payGrade;
     }
 
     public string AllInformation

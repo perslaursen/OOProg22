@@ -38,8 +38,11 @@ public class DBToolAdapter<T> : IDataSource<int, T> where T : class, IHasKey
             {
                 // Get the record corresponding to a specific key,
                 // and add the (key, object) pair to the result
-                T obj = _dbTool.GetRecord(key);
-                result.Add(key, obj);
+                T? obj = _dbTool.GetRecord(key);
+                if (obj != null)
+                {
+                    result.Add(key, obj);
+                }
             }
             return result;
         }
@@ -55,7 +58,7 @@ public class DBToolAdapter<T> : IDataSource<int, T> where T : class, IHasKey
         _dbTool.InsertRecord(data);
     }
 
-    public T Read(int key)
+    public T? Read(int key)
     {
         // Try to read a record - if unsuccessful, return null.
         try
@@ -72,8 +75,11 @@ public class DBToolAdapter<T> : IDataSource<int, T> where T : class, IHasKey
     {
         // Read the domain object corresponding to 
         // the given key, before calling DBTool.
-        T oldData = Read(key);
-        _dbTool.UpdateRecord(oldData, data);
+        T? oldData = Read(key);
+        if (oldData != null)
+        {
+            _dbTool.UpdateRecord(oldData, data);
+        }
     }
 
     public void Delete(int key)

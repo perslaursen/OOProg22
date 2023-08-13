@@ -16,7 +16,7 @@ public class Manager
         {
             int x = theGenerator.Next(0, 5);
             int y = theGenerator.Next(0, 5);
-            int value = theSimulator.Calculate(x, y);
+            int? value = theSimulator.Calculate(x, y);
             Console.WriteLine($"Iteration {iteration:000} :   ({x},{y}) => {value}");
         }
     }

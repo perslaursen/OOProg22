@@ -10,7 +10,7 @@
 /// </summary>
 public class Discounts
 {
-    public Dictionary<string, Func<Order, int>> DiscountRules;
+    public Dictionary<string, Func<Order, int>> DiscountRules { get; }
 
     public Discounts()
     {

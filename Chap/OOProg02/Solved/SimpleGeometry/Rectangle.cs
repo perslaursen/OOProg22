@@ -1,21 +1,21 @@
 ﻿
 public class Rectangle : Shape
 {
-    #region Instance fields
-    private double _xLowerLeft;
-    private double _yLowerLeft;
-    private double _xUpperRight;
-    private double _yUpperRight;
+    #region Properties
+    public double XLowerLeft { get; }
+    public double YLowerLeft { get; }
+    public double XUpperRight { get; }
+    public double YUpperRight { get; }
     #endregion
 
     #region Constructor
     public Rectangle(double xLowerLeft, double yLowerLeft, double xUpperRight, double yUpperRight)
         : base("Rectangle")
     {
-        _xLowerLeft = xLowerLeft;
-        _yLowerLeft = yLowerLeft;
-        _xUpperRight = xUpperRight;
-        _yUpperRight = yUpperRight;
+        XLowerLeft = xLowerLeft;
+        YLowerLeft = yLowerLeft;
+        XUpperRight = xUpperRight;
+        YUpperRight = yUpperRight;
     }
     #endregion
 
@@ -24,6 +24,6 @@ public class Rectangle : Shape
     /// </summary>
     public override double Area
     {
-        get { return (_xUpperRight - _xLowerLeft) * (_yUpperRight - _yLowerLeft); }
+        get { return (XUpperRight - XLowerLeft) * (YUpperRight - YLowerLeft); }
     }
 }

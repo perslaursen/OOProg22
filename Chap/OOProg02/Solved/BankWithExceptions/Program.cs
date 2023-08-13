@@ -1,5 +1,5 @@
 ﻿
-BankAccount theAccount = null;
+BankAccount? theAccount = null;
 
 // Create a new bank account with 25 % interest rate
 // (is that legal...?)

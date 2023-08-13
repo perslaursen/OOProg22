@@ -89,7 +89,7 @@ public class Hero
     /// </summary>
     public GearBuild BestGearBuild(AffinityType affinity)
     {
-        return null; // TODO - Implement correctly
+        return new GearBuild(); // TODO - Implement correctly
     }
     #endregion
 

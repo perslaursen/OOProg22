@@ -1,14 +1,14 @@
 ﻿
 public class Employee
 {
+    public string Name { get; set; }
+    public int YearOfBirth { get; set; }
+
     public Employee(string name, int yearOfBirth)
     {
         Name = name;
         YearOfBirth = yearOfBirth;
     }
-
-    public string Name { get; set; }
-    public int YearOfBirth { get; set; }
 
     public override string ToString()
     {

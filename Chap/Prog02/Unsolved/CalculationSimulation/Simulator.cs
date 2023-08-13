@@ -8,20 +8,14 @@ public class Simulator
 {
     #region Instance fields
     private Random _generator;
-    private bool _useCache;
-    private Cache _cache;
+    private Cache? _cache;
     #endregion
 
     #region Constructor
-    /// <summary>
-    /// Only create the cache if specified
-    /// </summary>
     public Simulator()
     {
         _generator = new Random();
-        _useCache = false;
-
-        _cache = (_useCache ? new Cache() : null);
+        _cache = new Cache(); // switch to null for cache-less calculation;
     }
     #endregion
 
@@ -29,24 +23,24 @@ public class Simulator
     /// <summary>
     /// Simulate a calculation, possibly using a cached value.
     /// </summary>
-    public int Calculate(int x, int y)
+    public int? Calculate(int x, int y)
     {
-        int result = -1;
+        int? result = null;
 
         if (x < 5 && x >= 0 && y < 5 && y >= 0)
         {
-            if (_useCache)
+            if (_cache != null)
             {
                 result = _cache.Lookup(x, y);
             }
 
-            if (result == -1)
+            if (result == null)
             {
                 result = DoCalculation(x, y);
 
-                if (_useCache)
+                if (_cache != null)
                 {
-                    _cache.Insert(x, y, result);
+                    _cache.Insert(x, y, result.Value);
                 }
             }
         }
@@ -68,7 +62,7 @@ public class Simulator
     /// </summary>
     private void Pause(int mSecs)
     {
-        System.Threading.Thread.Sleep(mSecs);
+        Thread.Sleep(mSecs);
     }
     #endregion
 }

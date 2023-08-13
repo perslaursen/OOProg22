@@ -1,43 +1,34 @@
 ﻿
 public class BankAccount
 {
-    private double _balance;
-    private double _interestRate;
-
-    public BankAccount(double interestRate)
-    {
-        _interestRate = interestRate;
-        _balance = 0.0;
-    }
-
     /// <summary>
     /// Balance of the account; must not become negative
     /// </summary>
-    public double Balance
-    {
-        get { return _balance; }
-    }
+    public double Balance { get; private set; }
 
     /// <summary>
     /// Interest rate of the account; must be between 0.0 and 20.0
     /// </summary>
-    public double InterestRate
+    public double InterestRate { get; }
+
+    public BankAccount(double interestRate)
     {
-        get { return _interestRate; }
+        InterestRate = interestRate;
+        Balance = 0.0;
     }
 
     public void Deposit(double amount)
     {
-        _balance = _balance + amount;
+        Balance = Balance + amount;
     }
 
     public void Withdraw(double amount)
     {
-        if (_balance < amount)
+        if (Balance < amount)
         {
-            throw new WithdrawAmountTooLargeException($"Amount was {amount} kr., balance was {_balance} kr.");
+            throw new WithdrawAmountTooLargeException($"Amount was {amount} kr., balance was {Balance} kr.");
         }
 
-        _balance = _balance - amount;
+        Balance = Balance - amount;
     }
 }

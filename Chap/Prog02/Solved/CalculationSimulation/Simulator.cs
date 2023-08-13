@@ -9,8 +9,7 @@ public class Simulator
 {
     #region Instance fields
     private Random _generator;
-    private bool _useCache;
-    private Cache _cache;
+    private Cache? _cache;
 
     private int _xDimension;
     private int _yDimension;
@@ -25,8 +24,7 @@ public class Simulator
         _generator = new Random();
         _xDimension = xDimension;
         _yDimension = yDimension;
-        _useCache = useCache;
-        _cache = (_useCache ? new Cache(xDimension, yDimension) : null);
+        _cache = (useCache ? new Cache(xDimension, yDimension) : null);
     }
     #endregion
 
@@ -34,24 +32,24 @@ public class Simulator
     /// <summary>
     /// Simulate a calculation, possibly using a cached value.
     /// </summary>
-    public int Calculate(int x, int y)
+    public int? Calculate(int x, int y)
     {
-        int result = Constants.CalculationNoValue;
+        int? result = null;
 
         if (x < _xDimension && x >= 0 && y < _yDimension && y >= 0)
         {
-            if (_useCache)
+            if (_cache != null)
             {
                 result = _cache.Lookup(x, y);
             }
 
-            if (result == Constants.CalculationNoValue)
+            if (result == null)
             {
                 result = DoCalculation(x, y);
 
-                if (_useCache)
+                if (_cache != null)
                 {
-                    _cache.Insert(x, y, result);
+                    _cache.Insert(x, y, result.Value);
                 }
             }
         }
@@ -71,10 +69,9 @@ public class Simulator
     /// <summary>
     /// Pause for the specified number of milliseconds
     /// </summary>
-    /// <param name="mSecs"></param>
     private void Pause(int mSecs)
     {
-        System.Threading.Thread.Sleep(mSecs);
+        Thread.Sleep(mSecs);
     }
     #endregion
 }

@@ -14,6 +14,7 @@ theGenerator.Pulse += englishClock.PrintTime;
 theGenerator.Pulse += germanClock.Tick;
 theGenerator.Pulse += germanClock.PrintTime;
 
+// Start pulsing... (don't mind the warning about "...not awaited")
 theGenerator.Start(200);
 
 Console.ReadKey();

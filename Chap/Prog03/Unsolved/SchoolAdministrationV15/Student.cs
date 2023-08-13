@@ -24,17 +24,13 @@ public class Student
 
     /// <summary>
     /// Returns the average of the test scores for the student.
-    /// If no scores are present, an average of -1 is returned.
+    /// If no scores are present, null is returned.
     /// </summary>
-    public double ScoreAverage
+    public double? ScoreAverage
     {
         get
         {
-            if (_testScores.Count == 0)
-            {
-                return -1;
-            }
-            else
+            if (_testScores.Count > 0)
             {
                 double sum = 0;
 
@@ -44,6 +40,10 @@ public class Student
                 }
 
                 return (sum / _testScores.Count);
+            }
+            else
+            {
+                return null;
             }
         }
     }

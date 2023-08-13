@@ -6,8 +6,22 @@
 /// </summary>
 public class Warrior
 {
-    private string _name;
-    private int _hitPoints;
+    /// <summary>
+    /// Returns the name of the Warrior
+    /// </summary>
+    public string Name { get; }
+
+    /// <summary>
+    /// Returns the current number of Hit Points for the Warrior
+    /// </summary>
+    public int HitPoints { get; private set; }
+
+    /// <summary>
+    /// Returns true if the Warrior is dead (defined as having zero or negative
+    /// Hit Points), otherwise false.
+    /// </summary>
+    public bool IsDead { get { return HitPoints <= 0; } }
+
 
     public Warrior(string name, int hitPoints)
     {
@@ -23,34 +37,10 @@ public class Warrior
             throw new ArgumentException("Initial hit points must be positive");
         }
 
-        _name = name;
-        _hitPoints = hitPoints;
+        Name = name;
+        HitPoints = hitPoints;
     }
 
-    /// <summary>
-    /// Returns the name of the Warrior
-    /// </summary>
-    public string Name
-    {
-        get { return _name; }
-    }
-
-    /// <summary>
-    /// Returns the current number of Hit Points for the Warrior
-    /// </summary>
-    public int HitPoints
-    {
-        get { return _hitPoints; }
-    }
-
-    /// <summary>
-    /// Returns true if the Warrior is dead (defined as having zero or negative
-    /// Hit Points), otherwise false.
-    /// </summary>
-    public bool IsDead
-    {
-        get { return _hitPoints <= 0; }
-    }
 
     /// <summary>
     /// Deals the given number of damage points to the Warrior.
@@ -65,6 +55,6 @@ public class Warrior
             throw new ArgumentException("Damage points must be non-negative");
         }
 
-        _hitPoints = _hitPoints - damagePoints;
+        HitPoints = HitPoints - damagePoints;
     }
 }

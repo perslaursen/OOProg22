@@ -8,13 +8,13 @@ public class PulseGenerator
     /// Subscribe to this event to be notified whenever
     /// a new Pulse event is generated.
     /// </summary>
-    public event Action Pulse;
+    public event Action? Pulse;
 
     /// <summary>
     /// Subscribe to this event to be notified when the
     /// last Pulse event in this session is generated.
     /// </summary>
-    public event Action LastPulse;
+    public event Action? LastPulse;
 
     public PulseGenerator()
     {

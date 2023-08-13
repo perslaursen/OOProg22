@@ -8,7 +8,7 @@
 public class AnimationDataDB
 {
     private const int AnimationDataSize = 25000;
-    private static Random _rng = null;
+    private static Random? _rng = null;
 
     /// <summary>
     /// Returns a large chunk of data, which simulates

@@ -4,23 +4,8 @@
 /// </summary>
 public class Barometer
 {
-    #region Instance fields
-    private double _pressureInHPa;
-    #endregion
-
-    #region Constructor
-    public Barometer()
-    {
-        _pressureInHPa = 1013.0;
-    }
-    #endregion
-
     #region Properties
-    public double Pressure
-    {
-        get { return _pressureInHPa; }
-        set { _pressureInHPa = value; }
-    }
+    public double Pressure { get; set; }
 
     public string WeatherDescription
     {
@@ -49,4 +34,13 @@ public class Barometer
         }
     }
     #endregion
+
+    #region Constructor
+    public Barometer()
+    {
+        Pressure = 1013.0;
+    }
+    #endregion
+
+
 }

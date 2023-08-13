@@ -1,32 +1,29 @@
-﻿public class BankAccount
+﻿
+public class BankAccount
 {
-    #region Instance fields
-    private double _balance;
+    #region Properties
+    public double Balance
+    {
+        get; private set;
+    }
     #endregion
 
     #region Constructor
     public BankAccount()
     {
-        _balance = 0.0;
-    }
-    #endregion
-
-    #region Properties
-    public double Balance
-    {
-        get { return _balance; }
+        Balance = 0.0;
     }
     #endregion
 
     #region Methods
     public void Deposit(double amount)
     {
-        _balance = _balance + amount;
+        Balance = Balance + amount;
     }
 
     public void Withdraw(double amount)
     {
-        _balance = _balance - amount;
+        Balance = Balance - amount;
     }
     #endregion
 }

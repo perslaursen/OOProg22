@@ -4,7 +4,7 @@
 /// </summary>
 /// <typeparam name="TKey">Type for object key</typeparam>
 /// <typeparam name="T">Type for domain object</typeparam>
-public interface IDataSource<TKey, T>
+public interface IDataSource<TKey, T> where TKey : notnull
 {
     /// <summary>
     /// Returns the number of objects in the data source.
@@ -31,7 +31,7 @@ public interface IDataSource<TKey, T>
     /// </summary>
     /// <param name="key">Key for domain object to read</param>
     /// <returns>Read domain object (or null)</returns>
-    T Read(TKey key);
+    T? Read(TKey key);
 
     /// <summary>
     /// Update a single domain object.

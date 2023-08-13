@@ -13,14 +13,11 @@ namespace UnitTestProject
         [TestMethod]
         public void TestWarrior_Constructor_HitPointsMinimal_NoException()
         {
-            // Arrange
-            Warrior? unexpectedResult = null;
-
             // Act
-            Warrior? actualResult = new Warrior("Rolf", 1);
+            Warrior actualResult = new Warrior("Rolf", 1);
 
-            // Arrange, Act & Assert
-            Assert.AreNotEqual(unexpectedResult, actualResult);
+            // Assert
+            Assert.IsNotNull(actualResult);
         }
 
         [TestMethod]
@@ -33,7 +30,7 @@ namespace UnitTestProject
             // Act
             string actualResult = testSubject.Name;
 
-            // Arrange, Act & Assert
+            // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
 

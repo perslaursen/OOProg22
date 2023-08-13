@@ -7,9 +7,9 @@ public class FamilyTreeNode
 {
     #region Properties (simple)
     public Person Self { get; set; }
-    public FamilyTreeNode Father { get; set; }
-    public FamilyTreeNode Mother { get; set; }
-    public FamilyTreeNode Spouse { get; set; }
+    public FamilyTreeNode? Father { get; set; }
+    public FamilyTreeNode? Mother { get; set; }
+    public FamilyTreeNode? Spouse { get; set; }
     public List<FamilyTreeNode> Children { get; set; }
     #endregion
 

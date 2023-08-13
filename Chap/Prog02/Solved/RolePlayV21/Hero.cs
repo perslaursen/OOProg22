@@ -4,11 +4,9 @@
 /// 2) The character can deal damage
 /// 3) The character can receive damage, causing the hit points to decrease
 /// </summary>
-public class Hero
+class Hero
 {
     #region Instance fields
-    private string _name;
-    private int _hitPoints;
     private int _maxHitPoints;
     private int _minDamage;
     private int _maxDamage;
@@ -22,12 +20,14 @@ public class Hero
     /// </summary>
     public Hero(NumberGenerator generator, BattleLog log, string name, int maxHitPoints, int minDamage, int maxDamage)
     {
+        Name = name;
+
         _generator = generator;
         _log = log;
-        _name = name;
         _maxHitPoints = maxHitPoints;
         _minDamage = minDamage;
         _maxDamage = maxDamage;
+
         Reset();
     }
     #endregion
@@ -38,24 +38,18 @@ public class Hero
     /// </summary>
     public bool Dead
     {
-        get { return (_hitPoints <= 0); }
+        get { return (HitPoints <= 0); }
     }
 
     /// <summary>
     /// Returns the current number of hit points for the Hero
     /// </summary>
-    public int HitPoints
-    {
-        get { return _hitPoints; }
-    }
+    public int HitPoints { get; private set; }
 
     /// <summary>
     /// Returns the name of the Hero
     /// </summary>
-    public string Name
-    {
-        get { return _name; }
-    }
+    public string Name { get; }
     #endregion
 
     #region Methods
@@ -64,7 +58,7 @@ public class Hero
     /// </summary>
     public void Reset()
     {
-        _hitPoints = _maxHitPoints;
+        HitPoints = _maxHitPoints;
     }
 
     /// <summary>
@@ -74,7 +68,7 @@ public class Hero
     public int DealDamage()
     {
         int damage = _generator.Next(_minDamage, _maxDamage);
-        string message = $"Hero ({_name}) dealt {damage} damage!";
+        string message = $"Hero ({Name}) dealt {damage} damage!";
         _log.Save(message);
         return damage;
     }
@@ -85,13 +79,13 @@ public class Hero
     /// </summary>
     public void ReceiveDamage(int points)
     {
-        _hitPoints = _hitPoints - points;
-        string message = $"Hero ({_name}) receives {points} damage, and is down to {_hitPoints} hit points";
+        HitPoints = HitPoints - points;
+        string message = $"Hero ({Name}) receives {points} damage, and is down to {HitPoints} hit points";
         _log.Save(message);
 
         if (Dead)
         {
-            _log.Save($"Hero ({_name}) died!");
+            _log.Save($"Hero ({Name}) died!");
         }
     }
     #endregion

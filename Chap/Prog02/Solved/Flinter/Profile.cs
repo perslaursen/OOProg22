@@ -6,7 +6,7 @@
 public class Profile
 {
     #region Enumeration definitions
-    public enum Gender { Man, Woman }
+    public enum Gender { Man, Woman, NonBinary }
     public enum EyeColor { Blue, Green, Red, Brown }
     public enum HairColor { White, Blond, Brown, Black, Grey }
     public enum HeightCategory { VeryShort, Short, Medium, Tall, VeryTall, Unknown }

@@ -1,5 +1,5 @@
 ﻿
-public class Repository<TKey, TValue>
+public class Repository<TKey, TValue> where TKey : notnull
 {
     private Dictionary<TKey, TValue> _items;
 

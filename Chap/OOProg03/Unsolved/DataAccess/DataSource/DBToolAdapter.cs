@@ -39,7 +39,7 @@ public class DBToolAdapter<T> : IDataSource<int, T> where T : class, IHasKey
         // Implement this method by using _dbTool
     }
 
-    public T Read(int key)
+    public T? Read(int key)
     {
         // Implement this method by using _dbTool
         return default(T);

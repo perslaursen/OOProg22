@@ -40,7 +40,7 @@ public class DataSourceAdapter<T> : IDataSource<int, T> where T : class
         // Implement this method by using _dbToolAdapter
     }
 
-    public T Read(int key)
+    public T? Read(int key)
     {
         // Implement this method by using _dbToolAdapter
         return default(T);
@@ -68,7 +68,7 @@ public class DataSourceAdapter<T> : IDataSource<int, T> where T : class
     #endregion
 
     #region Private methods for Wrap/Unwrap
-    private T Unwrap(KeyAdapter<T> wrappedObj)
+    private T? Unwrap(KeyAdapter<T>? wrappedObj)
     {
         return wrappedObj?.Data;
     }

@@ -33,10 +33,13 @@ void TestDBToolCustomer(DBTool<Customer> custDB)
     PrintDBInfo(custDB, "insert");
 
     // Update an object
-    Customer oldObj = custDB.GetRecord(3);
-    Customer newObj = new Customer(oldObj.Name, "13371337", oldObj.Key);
-    custDB.UpdateRecord(oldObj, newObj);
-    PrintDBInfo(custDB, "update");
+    Customer? oldObj = custDB.GetRecord(3);
+    if (oldObj != null)
+    {
+        Customer newObj = new Customer(oldObj.Name, "13371337", oldObj.Key);
+        custDB.UpdateRecord(oldObj, newObj);
+        PrintDBInfo(custDB, "update");
+    }
 
     // Try to remove three object (only two exist)
     custDB.RemoveRecord(2);
@@ -62,10 +65,13 @@ void TestDataSourceCustomer(IDataSource<int, Customer> custDataSource)
     PrintDataSourceInfo(custDataSource, "insert");
 
     // Update an object
-    Customer oldObj = custDataSource.Read(3);
-    Customer newObj = new Customer(oldObj.Name, "13371337", oldObj.Key);
-    custDataSource.Update(newObj.Key, newObj);
-    PrintDataSourceInfo(custDataSource, "update");
+    Customer? oldObj = custDataSource.Read(3);
+    if (oldObj != null)
+    {
+        Customer newObj = new Customer(oldObj.Name, "13371337", oldObj.Key);
+        custDataSource.Update(newObj.Key, newObj);
+        PrintDataSourceInfo(custDataSource, "update");
+    }
 
     // Try to remove three object (only two exist)
     custDataSource.Delete(2);
@@ -91,10 +97,13 @@ void TestDataSourceCar(IDataSource<int, Car> carDataSource)
     PrintDataSourceInfo(carDataSource, "insert");
 
     // Update an object
-    Car oldObj = carDataSource.Read(3);
-    Car newObj = new Car(oldObj.Plate, oldObj.Price + 15000);
-    carDataSource.Update(3, newObj);
-    PrintDataSourceInfo(carDataSource, "update");
+    Car? oldObj = carDataSource.Read(3);
+    if (oldObj != null)
+    {
+        Car newObj = new Car(oldObj.Plate, oldObj.Price + 15000);
+        carDataSource.Update(3, newObj);
+        PrintDataSourceInfo(carDataSource, "update");
+    }
 
     // Try to remove three object (only two exist)
     carDataSource.Delete(2);
@@ -114,7 +123,7 @@ void PrintDBInfo<T>(DBTool<T> dbTool, string dbOperation) where T : class, IHasK
     Console.WriteLine();
 }
 
-void PrintDataSourceInfo<TKey, TData>(IDataSource<TKey, TData> source, string dbOperation)
+void PrintDataSourceInfo<TKey, TData>(IDataSource<TKey, TData> source, string dbOperation) where TKey : notnull
 {
     Console.WriteLine($"(IDataSource) Number of records after DB {dbOperation}: {source.Count}");
     foreach (var keyAndObj in source.All)

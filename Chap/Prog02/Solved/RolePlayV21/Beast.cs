@@ -1,5 +1,4 @@
-﻿
-/// <summary>
+﻿/// <summary>
 /// This class implements a simple game character
 /// 1) The character has a certain number of "hit points"
 /// 2) The character can deal damage
@@ -8,9 +7,6 @@
 public class Beast
 {
     #region Instance fields
-
-    private string _name;
-    private int _hitPoints;
     private int _maxHitPoints;
     private int _minDamage;
     private int _maxDamage;
@@ -24,12 +20,14 @@ public class Beast
     /// </summary>
     public Beast(NumberGenerator generator, BattleLog log, string name, int maxHitPoints, int minDamage, int maxDamage)
     {
+        Name = name;
+
         _generator = generator;
         _log = log;
-        _name = name;
         _maxHitPoints = maxHitPoints;
         _minDamage = minDamage;
         _maxDamage = maxDamage;
+
         Reset();
     }
     #endregion
@@ -40,29 +38,20 @@ public class Beast
     /// </summary>
     public bool Dead
     {
-        get { return (_hitPoints <= 0); }
+        get { return (HitPoints <= 0); }
     }
 
     /// <summary>
     /// Returns the current number of hit points for the Beast
     /// </summary>
-    public int HitPoints
-    {
-        get { return _hitPoints; }
-    }
+    public int HitPoints { get; private set; }
 
     /// <summary>
     /// Returns the name of the Beast
     /// </summary>
-    public string Name
-    {
-        get { return _name; }
-    }
+    public string Name { get; }
 
-    public int Number
-    {
-        get { return 666; } // 3:-)
-    }
+    public int Number { get { return 666; } } // 3:-)
     #endregion
 
     #region Methods
@@ -71,7 +60,7 @@ public class Beast
     /// </summary>
     public void Reset()
     {
-        _hitPoints = _maxHitPoints;
+        HitPoints = _maxHitPoints;
     }
 
     /// <summary>
@@ -81,7 +70,7 @@ public class Beast
     public int DealDamage()
     {
         int damage = _generator.Next(_minDamage, _maxDamage);
-        string message = $"Beast ({_name}) dealt {damage} damage!";
+        string message = $"Beast ({Name}) dealt {damage} damage!";
         _log.Save(message);
         return damage;
     }
@@ -92,13 +81,13 @@ public class Beast
     /// </summary>
     public void ReceiveDamage(int points)
     {
-        _hitPoints = _hitPoints - points;
-        string message = $"Beast ({_name}) receives {points} damage, and is down to {_hitPoints} hit points";
+        HitPoints = HitPoints - points;
+        string message = $"Beast ({Name}) receives {points} damage, and is down to {HitPoints} hit points";
         _log.Save(message);
 
         if (Dead)
         {
-            _log.Save($"Beast ({_name}) died!");
+            _log.Save($"Beast ({Name}) died!");
         }
     }
     #endregion

@@ -8,22 +8,14 @@ public class Wand : Weapon
     public const int InitialWandMinDamage = 10;
     public const int InitialWandMaxDamage = 30;
 
-    #region Instance fields
-    private bool _isEnchanted;
+    #region Properties
+    public bool IsEnchanted { get; set; }
     #endregion
 
     #region Constructor
     public Wand(string description) : base(description, InitialWandMinDamage, InitialWandMaxDamage)
     {
-        _isEnchanted = false;
-    }
-    #endregion
-
-    #region Properties
-    public bool IsEnchanted
-    {
-        get { return _isEnchanted; }
-        set { _isEnchanted = value; }
+        IsEnchanted = false;
     }
     #endregion
 

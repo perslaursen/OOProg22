@@ -1,5 +1,4 @@
 ﻿
-using System.Xml.Linq;
 /// <summary>
 /// This class represents a cocktail, which is simply
 /// a name, and a list of ingredients.

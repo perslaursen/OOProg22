@@ -1,36 +1,19 @@
 ﻿
 public class Circle : Shape
 {
-    #region Instance fields
-    private double _x;
-    private double _y;
-    private double _radius;
+    #region Properties
+    public double X { get; }
+    public double Y { get; }
+    public double Radius { get; }
     #endregion
 
     #region Constructor
     public Circle(double x, double y, double radius)
         : base("Circle")
     {
-        _x = x;
-        _y = y;
-        _radius = radius;
-    }
-    #endregion
-
-    #region Properties
-    public double X
-    {
-        get { return _x; }
-    }
-
-    public double Y
-    {
-        get { return _y; }
-    }
-
-    public double Radius
-    {
-        get { return _radius; }
+        X = x;
+        Y = y;
+        Radius = radius;
     }
     #endregion
 

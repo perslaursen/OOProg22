@@ -134,8 +134,8 @@ PrintPersons("Friends of Carol or Carol's spouse (or both)", allFriends);
 
 #region Step 3: Find a secret date for the person not invited
 // TODO - Implement Step 3 correctly
-Person notInvited = null;
-Person datingNotInvited = null;
+Person? notInvited = null;
+Person? datingNotInvited = null;
 
 Console.WriteLine($"A secret date was arranged between {notInvited?.Name} and {datingNotInvited?.Name}...");
 Console.WriteLine();
@@ -211,7 +211,7 @@ void PrintPersons(string description, IEnumerable<Person> persons)
 /// <summary>
 /// Generate the FamilyTreeNode corresponding to the given Person. 
 /// </summary>
-FamilyTreeNode GenerateFamilyTreeNode(Person p)
+FamilyTreeNode? GenerateFamilyTreeNode(Person p)
 {
     // TODO - Implement GenerateFamilyTreeNode correctly (Hint: Aggregate...)
     return null;
@@ -229,12 +229,12 @@ void GenerateAndPrintFamilyTreeNode(Person p)
 /// <summary>
 /// Print a single FamilyTreeNode object, with a bit of formatting.
 /// </summary>
-void PrintFamilyTreeNode(FamilyTreeNode ftn, bool includeNoFamily = false)
+void PrintFamilyTreeNode(FamilyTreeNode? ftn, bool includeNoFamily = false)
 {
     if (PrintCondition(ftn, includeNoFamily))
     {
         Console.WriteLine();
-        Console.WriteLine($"--- Family Tree Node for {ftn.Self.Name} ---");
+        Console.WriteLine($"--- Family Tree Node for {ftn?.Self.Name} ---");
         Console.WriteLine(ftn);
         Console.WriteLine();
     }
@@ -244,18 +244,18 @@ void PrintFamilyTreeNode(FamilyTreeNode ftn, bool includeNoFamily = false)
 /// Print a single FamilyTreeNode object, with a bit of formatting.
 /// This method prints the object in a more compact form than PrintFamilyTreeNode.
 /// </summary>
-void PrintFamilyTreeNodeCompact(FamilyTreeNode ftn, bool includeNoFamily = false)
+void PrintFamilyTreeNodeCompact(FamilyTreeNode? ftn, bool includeNoFamily = false)
 {
     if (PrintCondition(ftn, includeNoFamily))
     {
-        Console.WriteLine($"FTN for {ftn.Self.Name}: {ftn}");
+        Console.WriteLine($"FTN for {ftn?.Self.Name}: {ftn}");
     }
 }
 
 /// <summary>
 ///  Condition for printing when in compact mode. 
 /// </summary>
-bool PrintCondition(FamilyTreeNode ftn, bool includeNoFamily)
+bool PrintCondition(FamilyTreeNode? ftn, bool includeNoFamily)
 {
     return ftn != null && (includeNoFamily || ftn.HasAnyFamily);
 }

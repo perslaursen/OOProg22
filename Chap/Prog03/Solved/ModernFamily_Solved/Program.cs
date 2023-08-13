@@ -243,12 +243,12 @@ void GenerateAndPrintFamilyTreeNode(Person p)
 /// <summary>
 /// Print a single FamilyTreeNode object, with a bit of formatting.
 /// </summary>
-void PrintFamilyTreeNode(FamilyTreeNode ftn, bool includeNoFamily = false)
+void PrintFamilyTreeNode(FamilyTreeNode? ftn, bool includeNoFamily = false)
 {
     if (PrintCondition(ftn, includeNoFamily))
     {
         Console.WriteLine();
-        Console.WriteLine($"--- Family Tree Node for {ftn.Self.Name} ---");
+        Console.WriteLine($"--- Family Tree Node for {ftn?.Self.Name} ---");
         Console.WriteLine(ftn);
         Console.WriteLine();
     }
@@ -258,18 +258,18 @@ void PrintFamilyTreeNode(FamilyTreeNode ftn, bool includeNoFamily = false)
 /// Print a single FamilyTreeNode object, with a bit of formatting.
 /// This method prints the object in a more compact form than PrintFamilyTreeNode.
 /// </summary>
-void PrintFamilyTreeNodeCompact(FamilyTreeNode ftn, bool includeNoFamily = false)
+void PrintFamilyTreeNodeCompact(FamilyTreeNode? ftn, bool includeNoFamily = false)
 {
     if (PrintCondition(ftn, includeNoFamily))
     {
-        Console.WriteLine($"FTN for {ftn.Self.Name}: {ftn}");
+        Console.WriteLine($"FTN for {ftn?.Self.Name}: {ftn}");
     }
 }
 
 /// <summary>
 ///  Condition for printing when in compact mode. 
 /// </summary>
-bool PrintCondition(FamilyTreeNode ftn, bool includeNoFamily)
+bool PrintCondition(FamilyTreeNode? ftn, bool includeNoFamily)
 {
     return ftn != null && (includeNoFamily || ftn.HasAnyFamily);
 }

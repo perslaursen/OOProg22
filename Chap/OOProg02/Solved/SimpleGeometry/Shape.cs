@@ -5,18 +5,12 @@
 /// </summary>
 public abstract class Shape
 {
-    private string _shapeName;
-
     protected Shape(string shapeName)
     {
-        _shapeName = shapeName;
+        ShapeName = shapeName;
     }
 
-    public string ShapeName
-    {
-        get { return _shapeName; }
-    }
-
+    public string ShapeName { get; }
     public abstract double Area { get; }
 
     public static double FindTotalArea(List<Shape> shapes)

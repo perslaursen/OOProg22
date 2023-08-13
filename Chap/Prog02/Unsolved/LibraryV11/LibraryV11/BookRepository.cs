@@ -38,7 +38,7 @@ public class BookRepository
     /// the List of books, which has a matching ISBN number.
     /// If no such object exists, the method returns null.
     /// </summary>
-    public Book LookupBook(string isbn)
+    public Book? LookupBook(string isbn)
     {
         // TODO
         return null;

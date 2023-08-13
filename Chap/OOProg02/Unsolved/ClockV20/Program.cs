@@ -8,7 +8,7 @@ PulseGenerator theGenerator = new PulseGenerator();
 // to the Pulse event in theGenerator
 
 
-// Start pulsing...
+// Start pulsing... (don't mind the warning about "...not awaited")
 theGenerator.Start(200);
 
 Console.ReadKey();

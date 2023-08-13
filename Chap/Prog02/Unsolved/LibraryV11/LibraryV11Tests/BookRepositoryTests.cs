@@ -5,7 +5,7 @@ namespace Tests
     [TestClass()]
     public class BookRepositoryTests
     {
-        private BookRepository _repository;
+        private BookRepository _repository = new BookRepository();
 
         public void TestSetup()
         {
@@ -44,11 +44,11 @@ namespace Tests
             TestSetup();
 
             // Act
-            Book result = _repository.LookupBook("AD1337");
+            Book? result = _repository.LookupBook("AD1337");
 
             // Assert
             Assert.AreNotEqual(null, result);
-            Assert.AreEqual(result.ISBN, "AD1337");
+            Assert.AreEqual(result?.ISBN, "AD1337");
         }
 
         [TestMethod()]
@@ -58,7 +58,7 @@ namespace Tests
             TestSetup();
 
             // Act
-            Book result = _repository.LookupBook("AD1338");
+            Book? result = _repository.LookupBook("AD1338");
 
             // Assert
             Assert.AreEqual(null, result);
@@ -71,7 +71,7 @@ namespace Tests
             TestSetup();
 
             // Act
-            Book result = _repository.LookupBook("...");
+            Book? result = _repository.LookupBook("...");
 
             // Assert
             Assert.AreEqual(null, result);
@@ -84,7 +84,7 @@ namespace Tests
             TestSetup();
 
             // Act
-            Book result = _repository.LookupBook("ad1337");
+            Book? result = _repository.LookupBook("ad1337");
 
             // Assert
             Assert.AreEqual(null, result);

@@ -18,7 +18,7 @@ public class GUI
         Console.WriteLine($"{orders.Count} orders in system, type 1 - {orders.Count} to see order invoice: ");
         Console.WriteLine("(Type a to see all orders, type q to Quit)");
         Console.Write("> ");
-        string input = Console.ReadLine();
+        string? input = Console.ReadLine();
 
         // Check for quitting
         quit = (input == "q");

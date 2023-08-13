@@ -42,40 +42,41 @@ public class StudentRepository
     /// Given an id, return the student with that id.
     /// If no student exists with the given id, return null.
     /// </summary>
-    public Student GetStudent(int id)
+    public Student? GetStudent(int id)
     {
         return _students.ContainsKey(id) ? _students[id] : null;
     }
 
     /// <summary>
     /// Given an id, return the score average for the student with that id.
-    /// If no student exists with the given id, return -1.
+    /// If no student exists with the given id, return null.
     /// </summary>
-    public int GetAverageForStudent(int id)
+    public int? GetAverageForStudent(int id)
     {
-        return _students.ContainsKey(id) ? _students[id].ScoreAverage : -1;
+        return _students.ContainsKey(id) ? _students[id].ScoreAverage : null;
     }
 
     /// <summary>
     /// Returns the total test score average for ALL students in the catalog.
-    /// Note that only students with a "real" score average (i.e. NOT -1) should
-    /// be included in the calculation of the average.
+    /// Note that only students with an actual score average (i.e. NOT null) 
+    /// should be included in the calculation of the average.
+    /// If there are no students with actual score averages, return null.
     /// </summary>
-    public int GetTotalAverage()
+    public int? GetTotalAverage()
     {
         int sumOfAverages = 0;
         int studentCount = 0;
 
         foreach (Student aStudent in _students.Values)
         {
-            if (aStudent.ScoreAverage != -1)
+            if (aStudent.ScoreAverage != null)
             {
-                sumOfAverages = sumOfAverages + aStudent.ScoreAverage;
+                sumOfAverages = sumOfAverages + aStudent.ScoreAverage.Value;
                 studentCount++;
             }
         }
 
-        return studentCount > 0 ? sumOfAverages / studentCount : -1;
+        return studentCount > 0 ? sumOfAverages / studentCount : null;
     }
     #endregion
 }

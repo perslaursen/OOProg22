@@ -5,7 +5,6 @@
 public class Character
 {
     #region Instance fields
-    private string _name;
     protected int _hitPoints;
     protected int _maxHitPoints;
     protected int _minDamage;
@@ -15,19 +14,18 @@ public class Character
     #region Constructor
     public Character(string name, int hitPoints, int minDamage, int maxDamage)
     {
-        _name = name;
+        Name = name;
+
         _maxHitPoints = hitPoints;
         _minDamage = minDamage;
         _maxDamage = maxDamage;
+
         Reset();
     }
     #endregion
 
     #region Properties
-    public string Name
-    {
-        get { return _name; }
-    }
+    public string Name { get; }
 
     /// <summary>
     /// Checks if the Character is dead, defined as having 0 or less hit points...

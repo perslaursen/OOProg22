@@ -3,11 +3,10 @@ namespace UnitTestProject
     [TestClass]
     public class CurrencyExchangeTest
     {
-        private ICurrencyExchange _currencyExchange;
+        private ICurrencyExchange _currencyExchange = new CurrencyExchange(new CurrencyCheck());
 
         public CurrencyExchangeTest()
         {
-            _currencyExchange = null;
         }
 
         private void Arrange()
@@ -91,7 +90,7 @@ namespace UnitTestProject
             Arrange();
 
             // Act & Assert
-            Assert.ThrowsException<ArgumentException>(() => { _currencyExchange.SetExchangeRate(null, -6.50); });
+            Assert.ThrowsException<ArgumentException>(() => { _currencyExchange.SetExchangeRate("USDDKK", -6.50); });
         }
 
         [TestMethod]
@@ -101,7 +100,7 @@ namespace UnitTestProject
             Arrange();
 
             // Act & Assert
-            Assert.ThrowsException<ArgumentException>(() => { _currencyExchange.SetExchangeRate(null, 0.0); });
+            Assert.ThrowsException<ArgumentException>(() => { _currencyExchange.SetExchangeRate("USDDKK", 0.0); });
         }
 
         [TestMethod]

@@ -93,7 +93,7 @@ public class DBTool<T> where T : class, IHasKey
     /// <summary>
     /// Get a single record from the database.
     /// </summary>
-    public T GetRecord(int key)
+    public T? GetRecord(int key)
     {
         if (key == NullKey)
         {
@@ -163,7 +163,7 @@ public class DBTool<T> where T : class, IHasKey
     /// <summary>
     /// Returns the object with the given key (or null if no such object exists).
     /// </summary>
-    private T LookupRecord(int key)
+    private T? LookupRecord(int key)
     {
         for (int i = 0; i < _objects.Count; i++)
         {

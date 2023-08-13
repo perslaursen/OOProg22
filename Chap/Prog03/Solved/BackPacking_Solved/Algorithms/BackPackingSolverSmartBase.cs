@@ -44,7 +44,7 @@ public abstract class BackPackingSolverSmartBase : BackPackingSolverBase
     private string PickNextItemFromVault(ItemVault theItemVault, double weightLimit)
     {
         double bestValue = 0;
-        BackPackItem bestItem = null;
+        BackPackItem? bestItem = null;
 
         foreach (var item in theItemVault.Items)
         {

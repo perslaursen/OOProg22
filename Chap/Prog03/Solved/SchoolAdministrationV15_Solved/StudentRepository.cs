@@ -31,21 +31,22 @@ public class StudentRepository
     /// <summary>
     /// Returns the total test score average for all students in the catalog.
     /// Note that if a student does not have any recorded scores yet, the
-    /// student is not included in the average
+    /// student is not included in the average.
+    /// If no students have an actual average, null is returned.
     /// </summary>
-    public double TotalAverage
+    public double? TotalAverage
     {
         get
         {
-            if (_students.Count == 0)
+            if (_students.Count > 0)
             {
-                return -1;
+                return _students.Where(e => e.Value.ScoreAverage != null)
+                                .Select(e => e.Value.ScoreAverage)
+                                .Average();
             }
             else
             {
-                return _students.Where(e => e.Value.ScoreAverage >= 0)
-                                .Select(e => e.Value.ScoreAverage)
-                                .Average();
+                return null;
             }
         }
     }
@@ -64,7 +65,7 @@ public class StudentRepository
     /// Given an id, return the student with that id.
     /// If no student exists with the given id, return null.
     /// </summary>
-    public Student GetStudent(int id)
+    public Student? GetStudent(int id)
     {
         if (_students.ContainsKey(id))
         {
@@ -78,9 +79,9 @@ public class StudentRepository
 
     /// <summary>
     /// Given an id, return the score average for the student with that id.
-    /// If no student exists with the given id, return -1.
+    /// If no student exists with the given id, return null.
     /// </summary>
-    public double GetAverageForStudent(int id)
+    public double? GetAverageForStudent(int id)
     {
         if (_students.ContainsKey(id))
         {
@@ -88,7 +89,7 @@ public class StudentRepository
         }
         else
         {
-            return -1;
+            return null;
         }
     }
     #endregion

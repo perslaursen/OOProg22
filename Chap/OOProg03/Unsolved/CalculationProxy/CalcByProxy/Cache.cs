@@ -6,7 +6,6 @@
 public class Cache
 {
     #region Instance fields
-    public const int NoValue = -1;
     private Dictionary<Coordinate, int> _cacheValues;
     #endregion
 
@@ -21,12 +20,11 @@ public class Cache
     #region Methods
     /// <summary>
     /// Look up the value corresponding to given coordinate.
-    /// If no value is stored for the given coordinate, 
-    /// NoValue is returned.
+    /// If no value is stored for the given coordinate, null is returned.
     /// </summary>
-    public int Lookup(Coordinate c)
+    public int? Lookup(Coordinate c)
     {
-        return _cacheValues.ContainsKey(c) ? _cacheValues[c] : NoValue;
+        return _cacheValues.ContainsKey(c) ? _cacheValues[c] : null;
     }
 
     /// <summary>

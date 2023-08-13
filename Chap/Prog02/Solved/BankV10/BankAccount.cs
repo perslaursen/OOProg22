@@ -1,21 +1,17 @@
 ﻿
 public class BankAccount
 {
-    #region Instance fields
-    private double _balance;
+    #region Properties
+    public double Balance
+    {
+        get; private set;
+    }
     #endregion
 
     #region Constructor
     public BankAccount()
     {
-        _balance = 0.0;
-    }
-    #endregion
-
-    #region Properties
-    public double Balance
-    {
-        get { return _balance; }
+        Balance = 0.0;
     }
     #endregion
 
@@ -24,15 +20,15 @@ public class BankAccount
     {
         if (amount > 0)
         {
-            _balance = _balance + amount;
+            Balance = Balance + amount;
         }
     }
 
     public void Withdraw(double amount)
     {
-        if ((amount > 0) && (amount <= _balance))
+        if ((amount > 0) && (amount <= Balance))
         {
-            _balance = _balance - amount;
+            Balance = Balance - amount;
         }
     }
     #endregion

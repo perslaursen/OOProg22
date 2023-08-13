@@ -7,7 +7,7 @@
 public class Database
 {
     #region Singleton implementation
-    private static Database _instance;
+    private static Database? _instance;
     public static Database Instance
     {
         get

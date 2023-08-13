@@ -6,12 +6,10 @@
 public class Stock
 {
     #region Instance fields
-    private string _id;
-    private double _price;
     private double _lowerLimit;
     private double _upperLimit;
     private Random _generator;
-    public event Action<string, double> PriceChanged;
+    public event Action<string, double>? PriceChanged;
     #endregion
 
     #region Constructor
@@ -35,13 +33,13 @@ public class Stock
             throw new ArgumentException("lowerLimit must be lower than upperLimit!");
         }
 
-        _id = id;
+        ID = id;
+
         _lowerLimit = lowerLimit;
         _upperLimit = upperLimit;
         _generator = new Random();
 
         Price = (_upperLimit + _lowerLimit) / 2;
-        PriceChanged = null;
     }
     #endregion
 
@@ -49,19 +47,12 @@ public class Stock
     /// <summary>
     /// Current stock price
     /// </summary>
-    public double Price
-    {
-        get { return _price; }
-        private set { _price = value; }
-    }
+    public double Price { get; private set; }
 
     /// <summary>
     /// Stock identifier (ticker)
     /// </summary>
-    public string ID
-    {
-        get { return _id; }
-    }
+    public string ID { get; }
     #endregion
 
     #region Methods
@@ -76,7 +67,7 @@ public class Stock
         int percentChange = 10 - _generator.Next(21);
         double factor = 1 + (percentChange / 100.0);
 
-        double newPrice = _price * factor;
+        double newPrice = Price * factor;
 
         if (newPrice > _upperLimit)
         {
