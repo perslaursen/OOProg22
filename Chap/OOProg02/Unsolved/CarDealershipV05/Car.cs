@@ -36,7 +36,7 @@ public class Car
     //    }
 
     //    // If one is null, but not both, return false.
-    //    if ((c1 is null) || (c2 is null))
+    //    if (ReferenceEquals(c1, null) || ReferenceEquals(c2, null))
     //    {
     //        return false;
     //    }
