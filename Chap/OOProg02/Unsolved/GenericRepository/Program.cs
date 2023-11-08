@@ -16,6 +16,6 @@ Employee e1 = new Employee("Allan", 1962);
 Employee e2 = new Employee("Bente", 1975);
 Employee e3 = new Employee("Carlo", 1973);
 
-employees.Insert(c1.LicensePlate, e1);
-employees.Insert(c2.LicensePlate, e2);
-employees.Insert(c3.LicensePlate, e3);
+employees.Insert(e1.Name, e1);
+employees.Insert(e2.Name, e2);
+employees.Insert(e3.Name, e3);

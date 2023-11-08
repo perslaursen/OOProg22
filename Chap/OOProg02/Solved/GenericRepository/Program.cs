@@ -14,8 +14,8 @@ Repository<string, Employee> employees = new Repository<string, Employee>();
 
 Employee e1 = new Employee("Allan", 1962);
 Employee e2 = new Employee("Bente", 1975);
-employees.Insert(c1.LicensePlate, e1);
-employees.Insert(c2.LicensePlate, e2);
+employees.Insert(e1.Name, e1);
+employees.Insert(e2.Name, e2);
 
 Repository<string, Computer> computers = new Repository<string, Computer>();
 
