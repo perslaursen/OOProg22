@@ -16,7 +16,7 @@ Helpers.PrintDrinkList(drinks);
 int maxId = drinks.Select(dr => dr.Id).DefaultIfEmpty(0).Max();
 
 Drink d1 = new Drink(maxId + 1, "Gin and Tonic", "Gin", 3, "Tonic", 15);
-Drink d2 = new Drink(maxId + 2, "Gin and Lemon", "Gin", 3, "Tonic", 20);
+Drink d2 = new Drink(maxId + 2, "Gin and Lemon", "Gin", 3, "Lemon", 20);
 
 dbMethods.WriteToDB(d1);
 dbMethods.WriteToDB(d2);
