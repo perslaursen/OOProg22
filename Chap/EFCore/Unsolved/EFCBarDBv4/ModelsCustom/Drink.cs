@@ -1,20 +1,6 @@
 ﻿
 public partial class Drink : IHasId
 {
-    /// <summary>
-    /// This constructor should be used when creating a new object to be managed by EF Core, 
-    /// since it does NOT set the navigation properties, but rather sets the corresponding identifiers.
-    /// </summary>
-    public Drink(string name, int? alcoholicPartId, int? alcoholicPartAmount, int? nonAlcoholicPartId, int? nonAlcoholicPartAmount)
-    {
-        Id = 0;
-        Name = name;
-        AlcoholicPartId = alcoholicPartId;
-        AlcoholicPartAmount = alcoholicPartAmount;
-        NonAlcoholicPartId = nonAlcoholicPartId;
-        NonAlcoholicPartAmount = nonAlcoholicPartAmount;
-    }
-
     public int Price
     {
         get

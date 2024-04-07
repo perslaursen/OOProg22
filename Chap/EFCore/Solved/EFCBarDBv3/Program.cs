@@ -20,14 +20,23 @@ Helpers.PrintList(ingDataService.GetAll());
 Helpers.PrintList(drinkDataService.GetAll());
 
 // Create new data (two new drinks)
-Drink d1 = new Drink(
-    "Gin and Tonic", 
-    ingDataService.ReadByName("Gin")?.Id, 3, 
-    ingDataService.ReadByName("Tonic")?.Id, 15);
-Drink d2 = new Drink(
-    "Elefanta", 
-    ingDataService.ReadByName("Rum")?.Id, 3, 
-    ingDataService.ReadByName("Fanta")?.Id, 20);
+Drink d1 = new Drink()
+{
+	Name = "Gin and Tonic",
+	AlcoholicPartId = ingDataService.ReadByName("Gin")?.Id,
+	AlcoholicPartAmount = 3,
+	NonAlcoholicPartId = ingDataService.ReadByName("Tonic")?.Id,
+	NonAlcoholicPartAmount = 15
+};
+
+Drink d2 = new Drink()
+{
+	Name = "Elefanta",
+	AlcoholicPartId = ingDataService.ReadByName("Rum")?.Id,
+	AlcoholicPartAmount = 3,
+	NonAlcoholicPartId = ingDataService.ReadByName("Fanta")?.Id,
+	NonAlcoholicPartAmount = 20
+};
 
 // Save the new data to the database
 drinkDataService.Create(d1);

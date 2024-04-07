@@ -1,21 +1,6 @@
 ﻿
 public partial class Drink
 {
-    //public Drink( // NB!!! https://learn.microsoft.com/en-us/ef/core/modeling/constructors
-    //    string name, 
-    //    int? alcoholicPartId, 
-    //    int? alcoholicPartAmount, 
-    //    int? nonAlcoholicPartId, 
-    //    int? nonAlcoholicPartAmount)
-    //{
-    //    Id = 0;
-    //    Name = name;
-    //    AlcoholicPartId = alcoholicPartId;
-    //    AlcoholicPartAmount = alcoholicPartAmount;
-    //    NonAlcoholicPartId = nonAlcoholicPartId;
-    //    NonAlcoholicPartAmount = nonAlcoholicPartAmount;
-    //}
-
     public int Price
     {
         get
