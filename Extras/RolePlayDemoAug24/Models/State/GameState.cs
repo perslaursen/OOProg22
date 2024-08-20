@@ -48,9 +48,9 @@ public class GameState : IGameState
 
 		AddToLog($"{damageDealer.Name} dealt {FormatDamage(dd)}  -->  {damageReceiver.Name} took {FD(receivedDamage)} damage");
 
-		if (damageDealer.IsDead)
+		if (damageReceiver.IsDead)
 		{
-			AddToLog($"{damageDealer.Name} died...");
+			AddToLog($"{damageReceiver.Name} died...");
 		}
 	}
 
