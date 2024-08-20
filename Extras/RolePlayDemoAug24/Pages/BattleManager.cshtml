@@ -1,0 +1,115 @@
+﻿@page
+@using RolePlayDemoAug24.Models.Base
+@model RolePlayDemoAug24.Pages.BattleManagerModel
+@{
+}
+
+<p class="display-1 text-center mb-5 fw-bold">BATTLE</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class ="card shadow" style="width: 18rem;">
+                <div class="card-header">
+                    <h2 class="mb-3 text-primary fw-bold">@Model.ChosenHero.Name</h2>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <img class="mb-3" src="/images/heroes/@(Model.ChosenHero.Name.Replace(" ", string.Empty)).jpg">
+                    <h3>@Model.ChosenHero.Healthpoints.ToString("0.00") HP</h3>
+                    <canvas id="myCanvasHero" width="250" height="50">
+                        Sorry, your browser does not support canvas.
+                    </canvas>
+                    <script>
+                        const canvasHero = document.getElementById("myCanvasHero");
+                        const ctxHero = canvasHero.getContext("2d");
+                        ctxHero.fillStyle = "blue";
+                        ctxHero.fillRect(0, 0, @(250 * Model.ChosenHero.HealthAsFraction), 50);
+                    </script>
+                    <h4 class="mt-4">Weapon</h4>
+                    <p class="ms-2 m-0 fst-italic">@Model.ChosenHero.Weapon?.Name</p>
+                    <div class="d-flex justify-content-between mt-3">
+                        <div class="me-3">
+                            <i class="fa fa-snowflake" style="color: blue;"></i>
+                            <span>@Model.GetDamageResistancePercent(DamageType.Frost)</span>
+                        </div>
+                        <div class="me-3">
+                            <i class="fa fa-fire" style="color: red;"></i>
+                            <span>@Model.GetDamageResistancePercent(DamageType.Fire)</span>
+                        </div>
+                        <div class="me-3">
+                            <i class="fa fa-square-virus" style="color: yellowgreen;"></i>
+                            <span>@Model.GetDamageResistancePercent(DamageType.Necrotic)</span>
+                        </div>
+                        <div class="me-3">
+                            <i class="fa fa-hand-fist" style="color: black;"></i>
+                            <span>@Model.GetDamageResistancePercent(DamageType.Physical)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col text-center">
+            <p class="display-6 mt-5">VS</p>
+            <div class="mt-5">
+                @if(Model.ChosenHero.IsDead)
+                {
+                    <button class="btn btn-secondary btn-lg mt-3" type="button" disabled>Hero is Dead...</button>
+                }
+                else if (Model.ChosenBeast.IsDead)
+                {
+                    <button class="btn btn-success btn-lg mt-3" type="button" disabled>Beast is Dead!!!</button>
+                }
+                else
+                {
+                    @if (Model.HeroToAttack)
+                    {
+                        <a class="btn btn-primary btn-lg mt-3" type="button" title="Attack" asp-page-handler="HeroAttack">Hero Attacks &#62;&#62;&#62;</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger btn-lg mt-3" type="button" title="Attack" asp-page-handler="BeastAttack">&#60;&#60;&#60; Beast Attacks</a>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+            <div class="card shadow" style="width: 18rem;">
+                <div class="card-header">
+                    <h2 class="mb-3 text-danger fw-bold">@Model.ChosenBeast.Name</h2>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <img class="mb-3" src="/images/beasts/@(Model.ChosenBeast.Name.Replace(" ", string.Empty)).jpg">
+                    <h3>@Model.ChosenBeast.Healthpoints.ToString("0.00") HP</h3>
+                    <canvas id="myCanvasBeast" width="250" height="50">
+                        Sorry, your browser does not support canvas.
+                    </canvas>
+                    <script>
+                        const canvasBeast = document.getElementById("myCanvasBeast");
+                        const ctxBeast = canvasBeast.getContext("2d");
+
+                        ctxBeast.fillStyle = "red";
+                        ctxBeast.fillRect(0, 0, @(250 * Model.ChosenBeast.HealthAsFraction), 50);
+                    </script>
+                    <h4 class="mt-4">Attacks</h4>
+                    @foreach (var attack in Model.ChosenBeast.Attacks)
+                    {
+                        <p class="ms-2 m-0 fst-italic">@attack.Name</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <h4>Log</h4>
+        <textarea class="form-control" rows="3" disabled>@Model.Log</textarea>
+    </div>
+</div>
+
+<div class="p-3">
+    <a class="btn btn-lg btn-danger" asp-page="ChooseBeast"> Back </a>
+    <a class="btn btn-lg btn-primary" asp-page-handler="Reset"> Reset </a>
+</div>

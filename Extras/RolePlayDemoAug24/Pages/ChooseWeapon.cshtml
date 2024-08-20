@@ -1,0 +1,56 @@
+﻿@page
+@using RolePlayDemoAug24.Models.Base
+@model RolePlayDemoAug24.Pages.ChooseWeaponModel
+@{
+}
+
+<p class="display-6 fw-bold">Choose a Weapon for @Model.ChosenHero.Name</p>
+
+<p class="m-0 fst-italic">A hero uses a Weapon to deal damage. A Weapon deals a total amount of damage, which is within the specified interval.</p>
+<p class="m-0 fst-italic">This damage is then distributed on the various damage flavors, according to the specified percentages for each flavor.</p>
+<p class="m-0 fst-italic">Some Weapons are thus better suited than others for a specific Hero...</p>
+
+<div class="container mt-3">
+    <div class="row">
+        @foreach (var weapon in Model.Weapons)
+        {
+            <div class="col-md-3 p-3">
+                <div class="card shadow" style="width: 15rem;">
+                    <div class="card-header">
+                        <h4>@weapon.Name</h4>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <img class="img-thumbnail mb-3" src="/images/weapons/@(weapon.Name.Replace(" ", string.Empty)).jpg">
+                        <div class="d-flex">
+                            <div>
+                                <h5>@weapon.Damage.MinAmount - @weapon.Damage.MaxAmount Damage</h5>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="me-3">
+                                        <i class="fa fa-snowflake" style="color: blue;"></i>
+                                        <span>@weapon.Damage.GetDamage(DamageType.Frost)</span>
+                                    </div>
+                                    <div class ="me-3">
+                                        <i class="fa fa-fire" style="color: red;"></i>
+                                        <span>@weapon.Damage.GetDamage(DamageType.Fire)</span>
+                                    </div>
+                                    <div class="me-3">
+                                        <i class="fa fa-square-virus" style="color: yellowgreen;"></i>
+                                        <span>@weapon.Damage.GetDamage(DamageType.Necrotic)</span>
+                                    </div>
+                                    <div class="me-3">
+                                        <i class="fa fa-hand-fist" style="color: black;"></i>
+                                        <span>@weapon.Damage.GetDamage(DamageType.Physical)</span>
+                                    </div>
+                                </div>
+
+                                <a class="btn btn-primary btn-sm mt-1" type="button" title="Select" asp-page-handler="SetWeapon" asp-route-id="@weapon.Id">Select</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<a class="btn btn-danger btn-lg mt-3 me-3" asp-page="ChooseHero"> Back </a>

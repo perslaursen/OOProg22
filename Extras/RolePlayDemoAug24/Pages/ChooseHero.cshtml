@@ -1,0 +1,59 @@
+﻿@page
+@using RolePlayDemoAug24.Models.Base
+@model RolePlayDemoAug24.Pages.ChooseHeroModel
+@{
+}
+
+<p class="display-6 fw-bold">Choose a Hero</p>
+
+<p class="m-0 fst-italic">Heroes have different amounts of Health Points (HP), and have different Damage Affinities.</p>
+<p class="m-0 fst-italic">A Damage Affinity defines how well the Hero can deal damage of a particular flavor.</p>
+<p class="m-0 fst-italic">A Damage Affinity of e.g. 120 % means that if the Hero deals damage of this flavor by using a Weapon,</p>
+<p class="m-0 fst-italic">the weapon damage is multiplied by this percentage.</p>
+
+<div class="container mt-3">
+    <div class="row">
+        @foreach (var hero in Model.Heroes)
+        {
+            <div class="col-md-3 p-3">
+                <div class="card shadow" style="width: 15rem;">
+                    <div class="card-header">
+                        <h3>@hero.Name</h3>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <img class="img-thumbnail mb-3" src="/images/heroes/@(hero.Name.Replace(" ", string.Empty)).jpg">
+                        <p class="fst-italic">@hero.Description</p>
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="me-3">
+                                <i class="fa fa-snowflake" style="color: blue;"></i>
+                                <span>@hero.DamageAffinity.GetPercentage(DamageType.Frost)</span>
+                            </div>
+                            <div class="me-3">
+                                <i class="fa fa-fire" style="color: red;"></i>
+                                <span>@hero.DamageAffinity.GetPercentage(DamageType.Fire)</span>
+                            </div>
+                            <div class="me-3">
+                                <i class="fa fa-square-virus" style="color: yellowgreen;"></i>
+                                <span>@hero.DamageAffinity.GetPercentage(DamageType.Necrotic)</span>
+                            </div>
+                            <div class="me-3">
+                                <i class="fa fa-hand-fist" style="color: black;"></i>
+                                <span>@hero.DamageAffinity.GetPercentage(DamageType.Physical)</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5>HP: @(hero.Healthpoints)</h5>
+                            </div>
+                            <div>
+                                <a class="btn btn-primary btn-sm" type="button" title="Select" asp-page-handler="SetHero" asp-route-id="@hero.Id">Select</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<a class="btn btn-danger btn-lg mt-3 me-3" asp-page="Index"> Back </a>

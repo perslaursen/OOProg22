@@ -1,0 +1,284 @@
+﻿@page
+@using RolePlayDemoAug24.Models.Base
+@model RolePlayDemoAug24.Pages.WeaponTestModel
+@{
+}
+
+<h3 class="mb-4">Weapon Test</h3>
+
+@* <form method="post" class="form-inline">
+	<table class="table table-bordered table-hover table-opacity" width="100%">
+		<colgroup>
+			<col style="width : 40%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+		</colgroup>
+		<thead>
+			<tr class="btn-secondary active">
+				<th>
+					Name
+				</th>
+				<th>
+					Fire
+				</th>
+				<th>
+					Frost
+				</th>
+				<th>
+					Necrotic
+				</th>
+				<th>
+					Physical
+				</th>
+				<th>
+					Total
+				</th>
+				<th>
+					Selected
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for (int i = 0; i < Model.Weapons.Count; i++)
+			{
+				var w = Model.Weapons[i];
+				<tr>
+					<td>
+						@w.Name
+					</td>
+					<td>
+						@w.GetDamage(DamageType.Fire).ToString("0.00")
+					</td>
+					<td>
+						@w.GetDamage(DamageType.Frost).ToString("0.00")
+					</td>
+					<td>
+						@w.GetDamage(DamageType.Necrotic).ToString("0.00")
+					</td>
+					<td>
+						@w.GetDamage(DamageType.Physical).ToString("0.00")
+					</td>
+					<td>
+						@w.GetTotalDamage().ToString("0.00")
+					</td>
+					<td>
+						<input type="checkbox" asp-for="ChosenWeapons[i]" />
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<table class="table table-bordered table-hover table-opacity" width="100%">
+		<colgroup>
+			<col style="width : 30%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+		</colgroup>
+		<thead>
+			<tr class="btn-secondary active">
+				<th>
+					Name
+				</th>
+				<th>
+					Health points
+				</th>
+				<th>
+					Fire
+				</th>
+				<th>
+					Frost
+				</th>
+				<th>
+					Necrotic
+				</th>
+				<th>
+					Physical
+				</th>
+				<th>
+					Total
+				</th>
+				<th>
+					Selected
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for (int i = 0; i < Model.Beasts.Count; i++)
+			{
+				var b = Model.Beasts[i];
+				<tr>
+					<td>
+						@b.Name
+					</td>
+					<td>
+						@b.Healthpoints.ToString("0.00")
+					</td>
+					<td>
+						@b.GetDamage(DamageType.Fire).ToString("0.00")
+					</td>
+					<td>
+						@b.GetDamage(DamageType.Frost).ToString("0.00")
+					</td>
+					<td>
+						@b.GetDamage(DamageType.Necrotic).ToString("0.00")
+					</td>
+					<td>
+						@b.GetDamage(DamageType.Physical).ToString("0.00")
+					</td>
+					<td>
+						@b.GetTotalDamage().ToString("0.00")
+					</td>
+					<td>
+						<input type="checkbox" asp-for="ChosenBeasts[i]" />
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<table class="table table-bordered table-hover table-opacity" width="100%">
+		<colgroup>
+			<col style="width : 40%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+		</colgroup>
+		<thead>
+			<tr class="btn-secondary active">
+				<th>
+					Name
+				</th>
+				<th>
+					Fire
+				</th>
+				<th>
+					Frost
+				</th>
+				<th>
+					Necrotic
+				</th>
+				<th>
+					Physical
+				</th>
+				<th>
+					Total
+				</th>
+				<th>
+					Selected
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for (int i = 0; i < Model.ArmorList.Count; i++)
+			{
+				var a = Model.ArmorList[i];
+				<tr>
+					<td>
+						@a.Name
+					</td>
+					<td>
+						@a.GetMitigationPercent(DamageType.Fire).ToString("0.00")
+					</td>
+					<td>
+						@a.GetMitigationPercent(DamageType.Frost).ToString("0.00")
+					</td>
+					<td>
+						@a.GetMitigationPercent(DamageType.Necrotic).ToString("0.00")
+					</td>
+					<td>
+						@a.GetMitigationPercent(DamageType.Physical).ToString("0.00")
+					</td>
+					<td>
+						@a.MitigationPercent.ToString("0.00")
+					</td>
+					<td>
+						<input type="checkbox" asp-for="ChosenArmor[i]" />
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<table class="table table-bordered table-hover table-opacity" width="100%">
+		<colgroup>
+			<col style="width : 30%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+			<col style="width : 10%">
+		</colgroup>
+		<thead>
+			<tr class="btn-secondary active">
+				<th>
+					Name
+				</th>
+				<th>
+					Health Points
+				</th>
+				<th>
+					Fire
+				</th>
+				<th>
+					Frost
+				</th>
+				<th>
+					Necrotic
+				</th>
+				<th>
+					Physical
+				</th>
+				<th>
+					.
+				</th>
+				<th>
+					.
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var h in Model.Heroes)
+			{
+				<tr>
+					<td>
+						@h.Name
+					</td>
+					<td>
+						@h.Healthpoints.ToString("0.00")
+					</td>
+					<td>
+						@h.GetMitigationPercent(DamageType.Fire).ToString("0.00")
+					</td>
+					<td>
+						@h.GetMitigationPercent(DamageType.Frost).ToString("0.00")
+					</td>
+					<td>
+						@h.GetMitigationPercent(DamageType.Necrotic).ToString("0.00")
+					</td>
+					<td>
+						@h.GetMitigationPercent(DamageType.Physical).ToString("0.00")
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<div class="input-group mb-3">
+		<input type="submit" value="Attack!" class="btn btn-primary" />
+	</div>
+</form> *@
