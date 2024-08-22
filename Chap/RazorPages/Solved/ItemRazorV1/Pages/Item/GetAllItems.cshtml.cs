@@ -1,9 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ItemRazorV1.Pages.Item
 {
-    public class GetAllItemsModel : PageModel
+	public class GetAllItemsModel : PageModel
     {
         public List<Models.Item> Items { get; private set; } = new List<Models.Item> 
         {
