@@ -16,7 +16,7 @@
 		{
 			var armor = Model.ArmorList[aIndex];
 			<div class="col-md-3 p-3">
-				<div class="card shadow" style="width: 15rem;">
+				<div class="card @(Model.ChosenArmor[aIndex] ? "border-5 border-danger" : string.Empty) shadow" style="width: 16rem;">
 					<div class="card-header d-flex justify-content-between">
 						<h5 class="fw-bold">@armor.Name</h5>
 						@if (armor.ArmorType == ArmorType.Feet)
@@ -61,7 +61,7 @@
 
 								@if (Model.ChosenArmor[aIndex])
 								{
-									<a class="btn btn-danger btn-sm mt-3" type="button" title="Selected" asp-page-handler="UpdateSelection" asp-route-id="@aIndex">Selected</a>
+									<a class="btn btn-danger btn-sm mt-3" type="button" title="Selected" asp-page-handler="UpdateSelection" asp-route-id="@aIndex">Unselect</a>
 								}
 								else if (Model.CanChooseArmor(aIndex))
 								{
