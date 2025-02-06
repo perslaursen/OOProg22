@@ -1,0 +1,71 @@
+-- SQL queries for exercise SQL.1
+
+
+-- 1.a (Full details for all weapons)
+SELECT * 
+FROM Weapon
+
+
+-- 1.b (Name, type and maximum damage for all weapons.)
+SELECT Name, Type, MaxDamage 
+FROM Weapon
+
+
+-- 1.c (Full details for weapons above item level 20.)
+SELECT * 
+FROM Weapon
+WHERE (ItemLevel > 20)
+
+
+-- 1.d (Full details for weapons with minimal damage below 25.)
+SELECT * 
+FROM Weapon
+WHERE (MinDamage < 25)
+
+
+-- 1.e (Full details for weapons with item level between 10 and 25.)
+SELECT * 
+FROM Weapon
+WHERE ItemLevel BETWEEN 10 AND 25
+
+
+-- 1.f (Full details for maces.)
+SELECT * 
+FROM Weapon
+WHERE Type = 'Mace'
+
+
+-- 1.g (Full details for maces and guns.)
+SELECT * 
+FROM Weapon
+WHERE Type IN ('Mace','Gun')
+
+
+-- 1.h (Name and maximum damage for all epic weapons.)
+SELECT Name, MaxDamage 
+FROM Weapon
+WHERE Rarity = 'Epic'
+
+
+-- 1.i (Name and rarity for all weapons with a jewel socket.)
+SELECT Name, Rarity 
+FROM Weapon
+WHERE JewelSockets > 0
+
+
+-- 1.j (Name and maximum damage for all rare weapons that are not two-handed weapons.)
+SELECT Name, MaxDamage 
+FROM Weapon
+WHERE Rarity = 'Rare' AND TwoHanded = 0
+
+
+-- 1.k (Name and type for weapons with a name starting with  S .)
+SELECT Name, Type 
+FROM Weapon
+WHERE Name LIKE 'S%'
+
+
+-- 1.l (Name and type for weapons with a name at most 10 characters long.)
+SELECT Name, Type 
+FROM Weapon
+WHERE Name NOT LIKE '___________%'

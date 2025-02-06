@@ -1,0 +1,42 @@
+-- SQL queries for exercise SQL.4
+
+
+-- 4.a (The name and type of the weapon that Frida uses with the right hand.)
+-- Expected result:
+--   Lucille   Mace
+SELECT Name, Type
+FROM Weapon
+WHERE Id = ( SELECT WeaponRight
+             FROM Character
+	     WHERE Name='Frida')
+
+-- 4.b (The name of all characters that use an Epic weapon.)
+-- Expected result:
+--   Romanov
+--   Frida
+SELECT Name
+FROM Character
+WHERE (WeaponLeft IN (SELECT Id FROM Weapon WHERE Rarity='Epic'))
+   OR (WeaponRight IN (SELECT Id FROM Weapon WHERE Rarity='Epic'))
+
+-- 4.c (The average item level of all weapons owned by Warriors.)
+-- Expected result: 15
+SELECT AVG(ItemLevel)
+FROM Character, Weapon, WeaponsOwned
+WHERE (Character.Id = WeaponsOwned.CharacterId) 
+  AND (Weapon.Id = WeaponsOwned.WeaponId)
+  AND (Character.Role = 'Warrior')
+
+
+-- 4.d (As c), but now return the average item level for each category of rarity)
+-- Expected result:
+--   Common   13
+--   Epic     26
+--   Rare     10
+SELECT Rarity, AVG(ItemLevel)
+FROM Character, Weapon, WeaponsOwned
+WHERE (Character.Id = WeaponsOwned.CharacterId) 
+  AND (Weapon.Id = WeaponsOwned.WeaponId)
+  AND (Character.Role = 'Warrior')
+GROUP BY Rarity
+

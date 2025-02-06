@@ -1,0 +1,46 @@
+-- SQL queries for exercise SQL.2
+
+
+-- 2.a (The minimum item level for any weapon in the table. Name the returned column MinItemLevel.)
+-- Expected result: 3
+SELECT MIN(ItemLevel) AS MinItemLevel
+FROM Weapon
+
+
+-- 2.b (The maximal number of jewel sockets for any weapon in the table. Name the returned column MaxJewelSockets.)
+-- Expected result: 3
+SELECT MAX(JewelSockets) AS MaxJewelSockets
+FROM Weapon
+
+
+-- 2.c (The number of weapons in the table that have a maximal damage above 100. Name the returned column NumberOfHighDamageWeapons.)
+-- Expected result: 4
+SELECT COUNT(*) AS NumberOfHighDamageWeapons
+FROM Weapon
+WHERE MaxDamage > 100
+
+
+-- 2.d (The number of weapons in the table with a rarity above Common. Name the returned column NumberOfWeaponsThatDontSuck.)
+-- Expected result: 7
+SELECT COUNT(*) AS NumberOfWeaponsThatDontSuck
+FROM Weapon
+WHERE Rarity IN ('Rare','Epic')
+
+
+-- 2.e (The average item level for all swords.)
+-- Expected result: 14
+SELECT AVG(ItemLevel) AS AverageItemLevelForSwords
+FROM Weapon
+WHERE type= 'Sword'
+
+-- 2.f (The total number of jewel sockets on the weapons in the table.)
+-- Expected result: 11
+SELECT SUM(JewelSockets) AS TotalJewelSockets
+FROM Weapon
+
+
+-- 2.g (The name, and "scaled-down" minimal and maximal damage for all weapons. The "scaled-down" damage is the original damage divided by 3. 
+--      Call the columns for scaled-down damage for NewMinDamage and NewMaxDamage, respectively.)
+SELECT (MinDamage / 3) AS NewMinDamage, (MaxDamage / 3) AS NewMaxDamage
+FROM Weapon
+
