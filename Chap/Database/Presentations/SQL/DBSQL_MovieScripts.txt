@@ -1,0 +1,77 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+DROP TABLE IF EXISTS [dbo].[Movie];
+DROP TABLE IF EXISTS [dbo].[Actor];
+DROP TABLE IF EXISTS [dbo].[Casting];
+
+
+CREATE TABLE [dbo].[Movie] (
+    [Id]            INT           NOT NULL,
+    [Title]         NVARCHAR (50) NOT NULL,
+    [Country]       NVARCHAR (50) NOT NULL,
+    [ProdYear]      INT           NOT NULL,
+    [Genre]         NVARCHAR (50) NOT NULL,
+    [OscarsWon]     INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[Actor] (
+    [Id]            INT           NOT NULL,
+    [Name]          NVARCHAR (50) NOT NULL,
+    [Country]       NVARCHAR (50) NOT NULL,
+    [BirthYear]     INT           NOT NULL,
+    [Alive]         BIT           NOT NULL,
+    [OscarsWon]     INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+GO
+CREATE TABLE [dbo].[Casting] (
+    [MovieId]       INT NOT NULL,
+    [ActorId]       INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([MovieId] ASC, [ActorId] ASC),
+    CONSTRAINT [FK_MovieId] FOREIGN KEY ([MovieId]) REFERENCES [dbo].[Movie] ([Id]),
+    CONSTRAINT [FK_ActorId] FOREIGN KEY ([ActorId]) REFERENCES [dbo].[Actor] ([Id])
+);
+
+
+INSERT INTO [dbo].[Movie] VALUES (1, N'E.T.', N'USA', 1982, N'Sci-Fi', 4)
+INSERT INTO [dbo].[Movie] VALUES (2, N'Taxi', N'France', 1998, N'Comedy', 0)
+INSERT INTO [dbo].[Movie] VALUES (3, N'Hunger', N'Denmark', 1966, N'Drama', 1)
+INSERT INTO [dbo].[Movie] VALUES (4, N'Leon', N'France', 1994, N'Thriller', 0)
+INSERT INTO [dbo].[Movie] VALUES (5, N'Hard Boiled', N'HK', 1992, N'Action', 0)
+INSERT INTO [dbo].[Movie] VALUES (6, N'1984', N'UK', 1984, N'Sci-Fi', 2)
+INSERT INTO [dbo].[Movie] VALUES (7, N'Seven', N'USA', 1995, N'Thrller', 1)
+
+INSERT INTO [dbo].[Actor] VALUES (1, N'John Wayne', N'USA', 1911, 0, 2)
+INSERT INTO [dbo].[Actor] VALUES (2, N'Chow-Yun Fat', N'HK', 1959, 1, 0)
+INSERT INTO [dbo].[Actor] VALUES (3, N'Karl Stegger', N'Denmark', 1922, 0, 0)
+INSERT INTO [dbo].[Actor] VALUES (4, N'Jean Reno', N'France', 1949, 1, 0)
+INSERT INTO [dbo].[Actor] VALUES (5, N'Julia Roberts', N'USA', 1964, 1, 1)
+INSERT INTO [dbo].[Actor] VALUES (6, N'Naalie Portman', N'Israel', 1980, 1, 0)
+INSERT INTO [dbo].[Actor] VALUES (7, N'Marc Duret', N'France', 1966, 1, 1)
+
+INSERT INTO [dbo].[Casting] VALUES (1, 1)
+INSERT INTO [dbo].[Casting] VALUES (1, 4)
+INSERT INTO [dbo].[Casting] VALUES (1, 5)
+INSERT INTO [dbo].[Casting] VALUES (1, 7)
+INSERT INTO [dbo].[Casting] VALUES (2, 4)
+INSERT INTO [dbo].[Casting] VALUES (2, 6)
+INSERT INTO [dbo].[Casting] VALUES (2, 7)
+INSERT INTO [dbo].[Casting] VALUES (3, 1)
+INSERT INTO [dbo].[Casting] VALUES (3, 2)
+INSERT INTO [dbo].[Casting] VALUES (3, 3)
+INSERT INTO [dbo].[Casting] VALUES (4, 4)
+INSERT INTO [dbo].[Casting] VALUES (4, 6)
+INSERT INTO [dbo].[Casting] VALUES (5, 2)
+INSERT INTO [dbo].[Casting] VALUES (5, 4)
+INSERT INTO [dbo].[Casting] VALUES (5, 6)
+INSERT INTO [dbo].[Casting] VALUES (6, 5)
+INSERT INTO [dbo].[Casting] VALUES (6, 6)
+INSERT INTO [dbo].[Casting] VALUES (7, 2)
+INSERT INTO [dbo].[Casting] VALUES (7, 4)
+INSERT INTO [dbo].[Casting] VALUES (7, 5)
